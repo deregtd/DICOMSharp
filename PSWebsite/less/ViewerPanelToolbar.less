@@ -1,0 +1,90 @@
+﻿@import 'Colors.less';
+
+.ViewerPanelToolbar {
+    height: 100%;
+    background: linear-gradient(#171717, #1a1a1a);
+    z-index: 1;
+    overflow: hidden;
+    padding: 2px 3px;
+}
+
+.ViewerPanelToolbar-mainRow {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ViewerPanelToolbar-mainRowSeriesinfo {
+    display: inline-block;
+    padding-right: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+        .ViewerPanelToolbar-infoCurrentSeries {
+            color: @ToolbarHighlightColor;
+        }
+
+        svg {
+            fill: @ToolbarHighlightColor;
+        }
+    }
+}
+
+.ViewerPanelToolbar-rightTools {
+    float: right;
+}
+
+.ViewerPanelToolbar-info {
+    display: inline-block;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ViewerPanelToolbar-infoCurrentSeries,
+.ViewerPanelToolbar-infoPriorStudy,
+.ViewerPanelToolbar-infoPriorSeries {
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ViewerPanelToolbar-infoCurrentSeries {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 0;
+}
+
+.ViewerPanelToolbar-infoPriorStudy {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.ViewerPanelToolbar-infoPriorSeries {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.ViewerPanelToolbar-extendedTools {
+    text-align: right;
+    margin-top: 2px;
+}
+
+/* Dicom Dump */
+
+.dicomdumpcontainer {
+}
+
+.dicomdumprow {
+    font-family: monospace;
+}
+
+.dicomdumpsqitem {
+    font-family: monospace;
+    padding-left: 20px;
+}
+
+.dicomdumpsqcontainer {
+    padding-left: 20px;
+}

@@ -1,0 +1,115 @@
+﻿@import 'Colors.less';
+
+.ToolbarButton {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        fill: @ToolbarButtonColor;
+    }
+
+    &:hover svg {
+        fill: @ToolbarHighlightColor;
+    }
+}
+
+.ToolbarButton--selected svg,
+.ToolbarButton--selected &:hover svg {
+    fill: @ToolbarSelectedColor;
+}
+
+.ToolbarButton-lettersContainer {
+    text-align: center;
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial;
+    text-shadow: 1px 1px 0 white, 1px -1px 0 white, -1px 1px 0 white, -1px -1px 0 white,
+        2px 2px 0 rgba(0,0,0,0.5), 2px -2px 0 rgba(0,0,0,0.5), -2px 2px 0 rgba(0,0,0,0.5), -2px -2px 0 rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    padding: 1px;
+    width: 100%;
+    color: red;
+}
+
+// Specific Button Overrides
+
+.ToolbarButton--patientInfo svg {
+    width: 17px;
+    height: 17px;
+}
+.ToolbarButton--settings svg {
+    width: 19px;
+    height: 19px;
+}
+.ToolbarButton--changeLayout svg {
+    width: 17px;
+    height: 17px;
+}
+.ToolbarButton--series svg {
+    width: 19px;
+    height: 19px;
+}
+.ToolbarButton--windowLevel svg {}
+.ToolbarButton--pan svg {}
+.ToolbarButton--zoom svg {
+    width: 19px;
+    height: 19px;
+}
+.ToolbarButton--localizer svg {
+    width: 19px;
+    height: 19px;
+}
+.ToolbarButton--mpr svg {
+    width: 25px;
+    height: 25px;
+}
+.ToolbarButton--lines svg {}
+.ToolbarButton--link svg {}
+.ToolbarButton--more svg {
+    width: 24px;
+    height: 24px;
+}
+.ToolbarButton--changeSeries svg {
+    width: 17px;
+    height: 17px;
+}
+.ToolbarButton--saveJpg svg {
+    width: 17px;
+    height: 17px;
+}
+.ToolbarButton--dicom svg {}
+.ToolbarButton--reset svg {}
+.ToolbarButton--invert svg {}
+.ToolbarButton--rotateClockwise svg {}
+.ToolbarButton--rotateCounterClockwise svg {}
+.ToolbarButton--flipHorizontal svg {}
+.ToolbarButton--flipVertical svg {}
+
+// Divider
+
+.ToolbarButtonDivider {
+    display: inline-block;
+    vertical-align: top;
+    width: 1px;
+    height: 32px;
+    margin: 4px 8px 0;
+}
+
+.ToolbarButtonDivider--master {
+    background: linear-gradient(#4c4c4c 0%, #6d6d6d 50%, #222222 100%);
+}
+
+.ToolbarButtonDivider--viewerPanel {
+    background: linear-gradient(#171717 0%, #6d6d6d 50%, #1a1a1a 100%);
+}

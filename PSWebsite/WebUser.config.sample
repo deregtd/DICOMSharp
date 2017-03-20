@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<serverSettings>
+  <add key="DatabaseType" value="SQLite" />
+  <add key="DatabaseServer" value="localhost" />
+  <add key="DatabaseSqlitePath" value="~/db/db" />
+  <add key="DatabaseUsername" value="sa" />
+  <add key="DatabasePassword" value="" />
+  <add key="DatabaseName" value="pacssoft" />
+</serverSettings>

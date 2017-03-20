@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "name": "pacssoft-pacs",
+  "private": true,
+  "scripts": {
+    "start": "webpack --watch"
+  },
+  "dependencies": {
+    "@types/assert": "0.0.29",
+    "@types/core-js": "^0.9.34",
+    "@types/lodash": "^4.14.38",
+    "@types/react": "^0.14.47",
+    "@types/react-dom": "^0.14.18",
+    "assert": "^1.4.1",
+    "autoprefixer": "^6.5.3",
+    "blueimp-md5": "^2.5.0",
+    "css-loader": "^0.25.0",
+    "dicom-parser": "^1.7.4",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "google-closure-compiler": "^20160911.0.0",
+    "jsx-loader": "^0.13.2",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.16.6",
+    "postcss-loader": "^0.13.0",
+    "react": "^15.3.2",
+    "react-bootstrap-table": "^2.5.8",
+    "react-dom": "^15.3.2",
+    "regexp-replace-loader": "0.0.1",
+    "resub": "0.0.10",
+    "style-loader": "^0.13.1",
+    "svg-inline-loader": "^0.7.1",
+    "svgo": "^0.7.1",
+    "svgo-loader": "^1.1.2",
+    "synctasks": "^0.2.10",
+    "ts-loader": "^0.8.2",
+    "typescript": "^2.0.9",
+    "webpack": "^1.13.3"
+  }
+}

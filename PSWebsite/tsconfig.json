@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "declaration": false,
+        "noResolve": false,
+        "jsx": "react",
+        "module": "commonjs",
+        "target": "es5",
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "./rawjs"
+    },
+    "filesGlob": [
+        "ts/**/*{ts,tsx}"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

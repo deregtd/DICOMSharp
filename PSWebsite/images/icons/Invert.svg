@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="27px" viewBox="0 0 22 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>Invert</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-528.000000, -200.000000)" fill="#FFFFFF">
+            <g id="Group-3-Copy-13" sketch:type="MSLayerGroup" transform="translate(539.000000, 212.000000) scale(-1, 1) translate(-539.000000, -212.000000) translate(519.000000, 192.000000)">
+                <path d="M17.6005554,30.8286354 C12.7082847,29.934739 9,25.6504277 9,20.5 C9,15.3495723 12.7082847,11.065261 17.6005554,10.1713646 L17.6005554,10.2193424 C12.5845722,11.2096478 9,15.4362131 9,20.5 C9,25.5637869 12.5845722,29.7903522 17.6005554,30.7806576 L17.6005554,30.8286354 Z M22.0083313,10.3014842 C26.5961323,11.4260172 30,15.5655007 30,20.5 C30,25.4344993 26.5961323,29.5739828 22.0083313,30.6985158 L22.0083313,27.5702855 C24.9169594,26.5383458 27,23.762433 27,20.5 C27,17.237567 24.9169594,14.4616542 22.0083313,13.4297145 L22.0083313,10.3014842 Z M17.6005554,27.7573814 C14.3781648,26.9163304 12,23.9858903 12,20.5 C12,17.0141097 14.3781648,14.0836696 17.6005554,13.2426186 L17.6005554,27.7573814 Z M19.2999878,8 L19.2999878,33 L20.2999878,33 L20.2999878,8 L19.2999878,8 L19.2999878,8 Z" id="Invert" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

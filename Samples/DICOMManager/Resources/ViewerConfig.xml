@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <modalities>
+
+    <modality name="All">
+      <overlays>
+
+        <overlay type="data" location="topleft">
+          <row>
+            <field id="0008,1030" format="string" />
+            <!-- Study Desc -->
+          </row>
+          <row>
+            <field id="0008,103E" format="string" />
+            <!-- Series Desc -->
+          </row>
+          <row>
+            <text value="Se: " />
+            <field id="0020,0011" format="string" />
+            <!-- Series # -->
+            <text value="/" />
+            <special name="seriescount" />
+          </row>
+          <row>
+            <text value="Im: " />
+            <field id="0020,0013" format="string" />
+            <!-- Image # -->
+            <text value="/" />
+            <special name="imagecount" />
+          </row>
+          <row>
+            <field id="0028,0011" format="string" />
+            <!-- Columns -->
+            <text value="x" />
+            <field id="0028,0010" format="string" />
+            <!-- Rows -->
+          </row>
+          <row>
+            <text value="Zoom: " />
+            <special name="zoom" />
+          </row>
+        </overlay>
+
+        <overlay type="data" location="topright">
+          <row>
+            <field id="0010,0010" format="name" />
+            <!-- Name -->
+          </row>
+          <row>
+            <field id="0010,1010" format="string" />
+            <!-- Age -->
+            <text value="  " />
+            <field id="0010,0040" format="string" />
+            <!-- Gender -->
+            <text value="  " />
+            <field id="0010,0020" format="string" />
+            <!-- MRN -->
+          </row>
+          <row>
+            <text value="Acc: " />
+            <field id="0008,0050" format="string" />
+            <!-- Accession -->
+          </row>
+          <row>
+            <text value="Study: " />
+            <field id="0020,0010" format="string" />
+            <!-- Study ID -->
+          </row>
+          <row>
+            <field id="0008,0020" format="date" />
+            <!-- Study Date -->
+          </row>
+          <row>
+            <field id="0008,0033" format="time" />
+            <!-- Image Time -->
+          </row>
+        </overlay>
+
+        <overlay type="data" location="bottomleft">
+          <row>
+            <text value="W: " />
+            <special name="window" />
+            <text value=", L: " />
+            <special name="level" />
+          </row>
+        </overlay>
+
+      </overlays>
+    </modality>
+
+    <modality name="CT">
+      <overlays>
+        <overlay type="data" location="bottomleft">
+          <row>
+            <text value="CT" />
+          </row>
+        </overlay>
+      </overlays>
+    </modality>
+
+    <modality name="MR">
+      <overlays>
+        <overlay type="data" location="bottomleft">
+          <row>
+            <text value="MR" />
+          </row>
+        </overlay>
+      </overlays>
+    </modality>
+
+  </modalities>
+</configuration>

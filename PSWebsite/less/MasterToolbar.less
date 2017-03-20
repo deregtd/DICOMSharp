@@ -1,0 +1,64 @@
+﻿@import 'Colors.less';
+
+.MasterToolbar {
+    width: 100%;
+    background: linear-gradient(#4c4c4c, #222222);
+    user-select: none;
+    vertical-align: top;
+    overflow: hidden;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+.MasterToolbar-patientInfo,
+.MasterToolbar-centerTools,
+.MasterToolbar-settings {
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+}
+
+// Patient Section
+
+.MasterToolbar-patientInfo {
+    float: left;
+    text-align: left;
+    width: 25%;
+    overflow: hidden;
+}
+
+.MasterToolbar-patientInfoInner {
+    display: inline-block;
+    padding-right: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+        .MasterToolbar-patientInfoText {
+            color: @ToolbarHighlightColor;
+        }
+
+        svg {
+            fill: @ToolbarHighlightColor;
+        }
+    }
+}
+
+.MasterToolbar-patientInfoText {
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    padding: 10px 4px;
+    font-size: 16px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Right Section
+
+.MasterToolbar-settings {
+    float: right;
+    text-align: right;
+    width: 25%;
+}

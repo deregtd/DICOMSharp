@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="24px" viewBox="0 0 22 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>Logout</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-472.000000, -144.000000)" fill="#FFFFFF">
+            <g id="Group-3-Copy-7" sketch:type="MSLayerGroup" transform="translate(463.000000, 136.000000)">
+                <path d="M25,11.337822 C27.9890069,13.0668691 30,16.2985882 30,20 C30,25.5228475 25.5228475,30 20,30 C14.4771525,30 10,25.5228475 10,20 C10,16.2985882 12.0109931,13.0668691 15,11.337822 L15,15.1010173 C13.762813,16.3635544 13,18.0926949 13,20 C13,23.8659932 16.1340068,27 20,27 C23.8659932,27 27,23.8659932 27,20 C27,18.0926949 26.237187,16.3635544 25,15.1010173 L25,11.337822 Z M18.5,8 L21.5,8 L21.5,20 L18.5,20 L18.5,8 Z" id="Logout" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
