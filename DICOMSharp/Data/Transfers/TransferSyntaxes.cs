@@ -89,50 +89,11 @@ namespace DICOMSharp.Data.Transfers
         public static TransferSyntax RFC2557MIMEencapsulation = new TransferSyntax("1.2.840.10008.1.2.6.1", "RFC 2557 MIME encapsulation", true, false, CompressionInfo.None);
         public static TransferSyntax XMLEncoding = new TransferSyntax("1.2.840.10008.1.2.6.2", "XML Encoding", true, false, CompressionInfo.None);
 
-        //Preferred support order
-        public static List<TransferSyntax> preferredSyntaxOrder = new List<TransferSyntax>(new TransferSyntax[] {
-            ImplicitVRLittleEndian,
-            ExplicitVRLittleEndian,
-            DeflatedExplicitVRLittleEndian,
-
-            JPEGBaselineProcess1,
-            JPEGExtendedProcess24,
-            JPEGExtendedProcess35Retired,
-            JPEGSpectralSelectionNonHierarchicalProcess68Retired,
-            JPEGSpectralSelectionNonHierarchicalProcess79Retired,
-            JPEGFullProgressionNonHierarchicalProcess1012Retired,
-            JPEGFullProgressionNonHierarchicalProcess1113Retired,
-            JPEGLosslessNonHierarchicalProcess14,
-            JPEGLosslessNonHierarchicalProcess15Retired,
-            JPEGExtendedHierarchicalProcess1618Retired,
-            JPEGExtendedHierarchicalProcess1719Retired,
-            JPEGSpectralSelectionHierarchicalProcess2022Retired,
-            JPEGSpectralSelectionHierarchicalProcess2123Retired,
-            JPEGFullProgressionHierarchicalProcess2426Retired,
-            JPEGFullProgressionHierarchicalProcess2527Retired,
-            JPEGLosslessHierarchicalProcess28Retired,
-            JPEGLosslessHierarchicalProcess29Retired,
-            JPEGLosslessNonHierarchicalFirstOrderPredictionProcess14,
-            JPEGLSLosslessImageCompression,
-            JPEGLSLossyNearLosslessImageCompression,
-            JPEG2000ImageCompressionLosslessOnly,
-            JPEG2000ImageCompression,
-            JPEG2000Part2MulticomponentImageCompressionLosslessOnly,
-            JPEG2000Part2MulticomponentImageCompression,
-            JPIPReferenced,
-            JPIPReferencedDeflate,
-            MPEG2MainProfileMainLevel,
-            MPEG2MainProfileHighLevel,
-            RLELossless,
-
-            ExplicitVRBigEndian
-        });
-
         //Unsupported list
         public static HashSet<TransferSyntax> unsupportedSyntaxes = new HashSet<TransferSyntax>(new TransferSyntax[] {
             XMLEncoding,
-            RFC2557MIMEencapsulation
+            RFC2557MIMEencapsulation,
+            ExplicitVRBigEndian
         });
-
     }
 }

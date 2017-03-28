@@ -312,11 +312,6 @@ namespace DICOMSharp.Data.Compression
 
             data[DICOMTags.PixelData] = newData;
 
-            if (!data.Elements.ContainsKey(DICOMTags.TransferSyntaxUID))
-            {
-                var elem = DICOMElement.CreateFromTag(DICOMTags.TransferSyntaxUID);
-                data.Elements.Add(elem.Tag, elem);
-            }
             data.TransferSyntax = newSyntax;
 
             if (samplesPerPixel == 3)

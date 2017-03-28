@@ -462,13 +462,14 @@ namespace DICOMSharp.Network.Connections
                             {
                                 if (!TransferSyntaxes.unsupportedSyntaxes.Contains(syntax))
                                 {
+                                    if (syntax == TransferSyntaxes.ExplicitVRLittleEndian && context.TransferSyntaxesProposed.Any(ts => ts != TransferSyntaxes.ExplicitVRLittleEndian && !TransferSyntaxes.unsupportedSyntaxes.Contains(ts)))
+                                    {
+                                        // If this syntax is Explicit VR, but they list any other supported syntax as an option, skip it.
+                                        continue;
+                                    }
+
                                     context.TransferSyntaxAccepted = syntax;
                                     context.Result = PresentationResult.Acceptance;
-
-                                    if (verboseLogging)
-                                    {
-                                        logger.Log(LogLevel.Warning, "Accepting Unsupported Transfer Syntax: " + syntax);
-                                    }
                                     break;
                                 }
                             }
