@@ -99,7 +99,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>dcmtk-3.6.0/dcmdata/libsrc/Release/dcmdata.lib;dcmtk-3.6.0/dcmjpeg/libijg8/release/ijg8.lib;dcmtk-3.6.0/dcmjpeg/libijg12/release/ijg12.lib;dcmtk-3.6.0/dcmjpeg/libijg16/release/ijg16.lib;dcmtk-3.6.0/dcmjpeg/libsrc/Release/dcmjpeg.lib;dcmtk-3.6.0/ofstd/libsrc/Release/ofstd.lib;dcmtk-3.6.0/oflog/libsrc/Release/oflog.lib;openjpeg/openjp2.lib;../build/charls.lib;ws2_32.lib;Advapi32.lib;Netapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>dcmtk-3.6.0/dcmdata/libsrc/Release/dcmdata.lib;dcmtk-3.6.0/dcmjpeg/libijg8/release/ijg8.lib;dcmtk-3.6.0/dcmjpeg/libijg12/release/ijg12.lib;dcmtk-3.6.0/dcmjpeg/libijg16/release/ijg16.lib;dcmtk-3.6.0/dcmjpeg/libsrc/Release/dcmjpeg.lib;dcmtk-3.6.0/ofstd/libsrc/Release/ofstd.lib;dcmtk-3.6.0/oflog/libsrc/Release/oflog.lib;openjpeg-v2.1.2-windows-x86/lib/openjp2.lib;../build/charls.lib;ws2_32.lib;Advapi32.lib;Netapi32.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
@@ -113,7 +113,7 @@
       </Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y openjpeg\openjp2.dll ..\Build</Command>
+      <Command>copy /Y openjpeg-v2.1.2-windows-x86\bin\openjp2.dll ..\Build</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy OpenJPEG DLL into Build</Message>
