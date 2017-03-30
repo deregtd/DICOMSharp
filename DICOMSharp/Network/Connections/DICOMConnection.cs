@@ -354,6 +354,12 @@ namespace DICOMSharp.Network.Connections
                                 commandDICOM.ParseStream(commandStream, ActivePresentationContext.TransferSyntaxAccepted, false, true, logger);
                                 commandStream = new MemoryStream();
 
+                                if (verboseLogging)
+                                {
+                                    logger.Log(LogLevel.Debug, "Command DICOM:");
+                                    logger.Log(LogLevel.Debug, commandDICOM.Dump());
+                                }
+
                                 //new command, so nuke the dataset (pretty sure this is right)
                                 dataDICOM = null;
 
@@ -368,6 +374,12 @@ namespace DICOMSharp.Network.Connections
                                 dataStream.Seek(0, SeekOrigin.Begin);
                                 dataDICOM.ParseStream(dataStream, ActivePresentationContext.TransferSyntaxAccepted, false, true, logger);
                                 dataStream = new MemoryStream();
+
+                                if (verboseLogging)
+                                {
+                                    logger.Log(LogLevel.Debug, "Data DICOM:");
+                                    logger.Log(LogLevel.Debug, commandDICOM.Dump());
+                                }
 
                                 if (commandDICOM != null)
                                     ProcessCommand();
@@ -952,24 +964,23 @@ namespace DICOMSharp.Network.Connections
         private void ProcessCommand()
         {
             if (commandDICOM == null)
+            {
+                logger.Log(LogLevel.Warning, "ProcessCommand with null commandDICOM");
                 return;
+            }
 
             if (!commandDICOM.Elements.ContainsKey(DICOMTags.CommandField))
-                return;
-
-            if (verboseLogging)
             {
-                logger.Log(LogLevel.Debug, "Processing Command. Command DICOM:");
-                logger.Log(LogLevel.Debug, commandDICOM.Dump());
-
-                if (dataDICOM != null)
-                {
-                    logger.Log(LogLevel.Debug, "Data DICOM:");
-                    logger.Log(LogLevel.Debug, dataDICOM.Dump());
-                }
+                logger.Log(LogLevel.Warning, "ProcessCommand with commandDICOM without CommandField tag");
+                return;
             }
 
             PDATACommands command = (PDATACommands)(ushort)commandDICOM.Elements[DICOMTags.CommandField].Data;
+
+            if (verboseLogging)
+            {
+                logger.Log(LogLevel.Debug, "Processing Command: " + command.ToString() + ", Data: " + (dataDICOM != null ? "Attached" : "None"));
+            }
 
             if (getHandling && command == PDATACommands.CSTORERSP)
             {
