@@ -751,7 +751,7 @@ namespace PSCommon.Utilities
             PSEntity entity = null;
             lock (_connection)
             {
-                using (DbDataReader reader = ExecuteReader("SELECT * FROM Entities WHERE AE = '" + Escape(aeTitle) + "'"))
+                using (DbDataReader reader = ExecuteReader("SELECT * FROM Entities WHERE AE = '" + Escape(aeTitle.Trim()) + "'"))
                 {
                     if (reader.Read())
                     {

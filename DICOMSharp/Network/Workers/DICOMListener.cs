@@ -153,7 +153,7 @@ namespace DICOMSharp.Network.Workers
                     conn.LogLine(LogLevel.Info, "Received C-MOVE-RQ");
                     if (MoveRequest != null)
                     {
-                        string newAE = cmdDICOM[DICOMTags.MoveDestination].Display;
+                        string newAE = cmdDICOM[DICOMTags.MoveDestination].Display.Trim();
                         ApplicationEntity entity = null;
                         if (EntityLookup != null)
                             entity = EntityLookup(newAE);
