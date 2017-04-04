@@ -13,7 +13,7 @@ namespace DICOMSharp.Data.Elements
         {
         }
 
-        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR)
+        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax)
         {
             //Store it as LSB-ordered bytes for optimization
             //Maybe down the line add some optimized way to modify a word array if it looks like a user's gonna be doing that a lot for some reason
@@ -21,7 +21,7 @@ namespace DICOMSharp.Data.Elements
             return this.length;
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             bw.WriteWords(data);
         }

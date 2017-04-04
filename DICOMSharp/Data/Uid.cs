@@ -25,6 +25,11 @@ namespace DICOMSharp.Data
         /// <returns>The byte string, properly null terminated as needed</returns>
         public static byte[] UidToBytes(string uidRaw)
         {
+            if (string.IsNullOrEmpty(uidRaw))
+            {
+                return new byte[] { };
+            }
+
             // UID encoding rules: PS 3.5, Pages 61-62
             var uidStr = SanitizeUid(uidRaw);
             if ((uidStr.Length & 1) > 0)
@@ -42,6 +47,11 @@ namespace DICOMSharp.Data
         /// <returns>Sanitized UID</returns>
         public static string SanitizeUid(string uidRaw)
         {
+            if (string.IsNullOrEmpty(uidRaw))
+            {
+                return "";
+            }
+
             var uidStr = uidRaw.Replace("\0", "").Trim();
             if (uidStr.Length > 64)
             {

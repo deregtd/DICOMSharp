@@ -14,14 +14,14 @@ namespace DICOMSharp.Data.Elements
             padChar = (byte) ' ';
         }
 
-        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR)
+        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax)
         {
             //reuse setter
             Data = System.Text.Encoding.ASCII.GetString(br.ReadBytes((int)length));
             return length;
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             bw.Write(Encoding.ASCII.GetBytes(data));
 

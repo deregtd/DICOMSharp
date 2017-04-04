@@ -26,7 +26,7 @@ namespace DICOMSharp.Data.Elements
             EncapsulatedImageData = null;
         }
 
-        internal uint ParseStream(SwappableBinaryReader br, ILogger logger, bool explicitVR, uint length, bool encapImage)
+        internal uint ParseStream(SwappableBinaryReader br, ILogger logger, TransferSyntax transferSyntax, uint length, bool encapImage)
         {
             IsEncapsulatedImage = encapImage;
 
@@ -59,7 +59,7 @@ namespace DICOMSharp.Data.Elements
 
                 //Make element
                 uint outLen;
-                DICOMElement nelem = DICOMElement.Parse(group, elem, logger, explicitVR, br, this, false, out outLen);
+                DICOMElement nelem = DICOMElement.Parse(group, elem, logger, transferSyntax, br, this, false, out outLen);
 
                 //Store reading position in case it's useful later
                 nelem.ReadPosition = readPosition;
@@ -77,7 +77,7 @@ namespace DICOMSharp.Data.Elements
             return count;
         }
 
-        internal void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             if (IsEncapsulatedImage)
             {
@@ -95,7 +95,7 @@ namespace DICOMSharp.Data.Elements
                     elem.WritePosition = bw.BaseStream.Position;
 
                     //Have the element write itself out.
-                    elem.Write(bw, logger, explicitVR);
+                    elem.Write(bw, logger, transferSyntax);
                 }
             }
         }

@@ -105,7 +105,7 @@ namespace DICOMSharp.Data
                 DICOMElement nelem;
                 try
                 {
-                    nelem = DICOMElement.Parse(group, elem, logger, inGroup2 ? true : transferSyntax.ExplicitVR, sr, null, skipData, out outLen);
+                    nelem = DICOMElement.Parse(group, elem, logger, transferSyntax, sr, null, skipData, out outLen);
                 }
                 catch (Exception e)
                 {
@@ -269,7 +269,7 @@ namespace DICOMSharp.Data
                 if (elem.Group != 2 || !isNetworkTransfer)
                 {
                     //Have the element write itself out.
-                    elem.Write(bw, logger, elem.Group == 2 ? true : transferSyntax.ExplicitVR);
+                    elem.Write(bw, logger, transferSyntax);
                 }
             }
 

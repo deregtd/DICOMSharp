@@ -15,7 +15,7 @@ namespace DICOMSharp.Data.Elements
             //Ordered Pair of Attribute Tags (group then elem)
         }
 
-        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR)
+        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax)
         {
             //Sometimes there's 0-length ATs...
             uint readCount = length;
@@ -44,7 +44,7 @@ namespace DICOMSharp.Data.Elements
             return length;
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             bw.Write(encapgroup);
             bw.Write(encapelem);

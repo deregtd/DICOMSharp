@@ -24,7 +24,7 @@ namespace DICOMSharp.Data.Elements
             Items = new List<SQItem>();
         }
 
-        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR)
+        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax)
         {
             //Covered by PS 3.5, Chapter 7.5 (pg. 42-45)
             bool encapImage = (Tag == DICOMTags.PixelData);
@@ -63,7 +63,7 @@ namespace DICOMSharp.Data.Elements
                 {
                     //Normal element, parse it out.
                     SQItem item = new SQItem(this);
-                    count += item.ParseStream(br, logger, explicitVR, len, encapImage);
+                    count += item.ParseStream(br, logger, transferSyntax, len, encapImage);
                     Items.Add(item);
                 }
                 else if (grp == 0xFFFE && elem == 0xE0DD)
@@ -104,7 +104,7 @@ namespace DICOMSharp.Data.Elements
             return length;
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             //Covered by PS 3.5, Chapter 7.5 (pg. 42-45)
 
@@ -113,10 +113,10 @@ namespace DICOMSharp.Data.Elements
                 //write FFFE,E000 item header
                 bw.Write((ushort)0xFFFE);
                 bw.Write((ushort)0xE000);
-                bw.Write(item.GetLength(explicitVR));
+                bw.Write(item.GetLength(transferSyntax.ExplicitVR));
 
                 //write your contents!
-                item.WriteData(bw, logger, explicitVR);
+                item.WriteData(bw, logger, transferSyntax);
             }
 
             if (group == 0x7FE0 && elem == 0x0010)

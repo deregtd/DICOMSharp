@@ -13,7 +13,7 @@ namespace DICOMSharp.Data.Elements
         {
         }
 
-        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR)
+        internal override uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax)
         {
             if (length < 8)
             {
@@ -29,7 +29,7 @@ namespace DICOMSharp.Data.Elements
             return length;
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             bw.Write(data);
         }

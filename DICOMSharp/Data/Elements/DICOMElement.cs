@@ -28,8 +28,8 @@ namespace DICOMSharp.Data.Elements
             this.groupelem = ((uint)group << 16) | elem;
         }
 
-        abstract internal uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, bool explicitVR);
-        abstract internal void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR);
+        abstract internal uint ParseData(SwappableBinaryReader br, ILogger logger, uint length, TransferSyntax transferSyntax);
+        abstract internal void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax);
 
         /// <summary>
         /// Dump the contents of the DICOM Element to a string, usually for debugging.
@@ -193,13 +193,14 @@ namespace DICOMSharp.Data.Elements
         protected SQItem parentSQItem;
 
 
-        internal void Write(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal void Write(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             //Group/Element
             bw.Write(group);
             bw.Write(elem);
 
-            if (explicitVR)
+            // Group 0 is always little-endian implicit vr, group 2 is always little-endian explicit vr
+            if ((transferSyntax.ExplicitVR && group != 0) || group == 2)
             {
                 //Shortcut write OB always for image data, even if it's a sequence
                 if (Group == 0x7FE0 && Elem == 0x0010)
@@ -216,12 +217,12 @@ namespace DICOMSharp.Data.Elements
                     if (Group == 0x7FE0 && Elem == 0x0010 && VR == "SQ")
                         bw.Write((uint)0xFFFFFFFF);
                     else
-                        bw.Write(GetDataLength(explicitVR));
+                        bw.Write(GetDataLength(true));
                 }
                 else
                 {
                     //2 Length
-                    bw.Write((ushort)GetDataLength(explicitVR));
+                    bw.Write((ushort)GetDataLength(true));
                 }
             }
             else
@@ -230,30 +231,21 @@ namespace DICOMSharp.Data.Elements
                 if (Group == 0x7FE0 && Elem == 0x0010 && VR == "SQ")
                     bw.Write((uint)0xFFFFFFFF);
                 else
-                    bw.Write(GetDataLength(explicitVR));
+                    bw.Write(GetDataLength(false));
             }
 
-            this.WriteData(bw, logger, explicitVR);
+            this.WriteData(bw, logger, transferSyntax);
         }
 
         //parseLen returns total bytes read
-        internal static DICOMElement Parse(ushort group, ushort elem, ILogger logger, bool explicitVR, SwappableBinaryReader br, SQItem parentSQ, bool skipOverData, out uint parseLen)
+        internal static DICOMElement Parse(ushort group, ushort elem, ILogger logger, TransferSyntax transferSyntax, SwappableBinaryReader br, SQItem parentSQ, bool skipOverData, out uint parseLen)
         {
             ushort vr;
             uint len;
             uint headerBytes = 0;
 
-            //if (explicitVR == null)
-            //{
-            //    // Haven't verified Explicitness of VR yet on this stream.  Verify and set it for the remainder of this stream.
-            //    ushort test = br.ReadUInt16MSB();
-            //    br.BaseStream.Seek(-2, SeekOrigin.Current);
-            //    bool explicitCheck = vrLookup.Contains(test);
-
-            //    explicitVR = explicitCheck;
-            //}
-
-            if (explicitVR)
+            // Group 0 is always little-endian implicit vr, group 2 is always little-endian explicit vr
+            if ((transferSyntax.ExplicitVR && group != 0) || group == 2)
             {
                 vr = br.ReadUInt16MSB();
                 headerBytes += 2;
@@ -318,7 +310,7 @@ namespace DICOMSharp.Data.Elements
                 }
                 else
                 {
-                    parseLen += ret.ParseData(br, logger, len, explicitVR);
+                    parseLen += ret.ParseData(br, logger, len, transferSyntax);
                 }
             }
             catch (Exception e)

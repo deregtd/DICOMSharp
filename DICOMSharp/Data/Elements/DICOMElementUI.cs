@@ -1,4 +1,5 @@
-﻿using DICOMSharp.Logging;
+﻿using DICOMSharp.Data.Transfers;
+using DICOMSharp.Logging;
 using DICOMSharp.Util;
 using System;
 using System.Text;
@@ -18,7 +19,7 @@ namespace DICOMSharp.Data.Elements
             get { return "UI"; }
         }
 
-        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, bool explicitVR)
+        internal override void WriteData(SwappableBinaryWriter bw, ILogger logger, TransferSyntax transferSyntax)
         {
             // Make sure to follow the UID rules
             bw.Write(Uid.UidToBytes(this.data));
