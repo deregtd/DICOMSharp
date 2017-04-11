@@ -244,7 +244,8 @@ class DicomImage {
             case 'UT':
             case 'ST':
             case 'LT':
-                return this._dataSet.text(tag).split('\\').map(val => Number(val));
+                const valText = this._dataSet.text(tag);
+                return valText && valText.split('\\').map(val => Number(val));
 
             default:
                 console.log('Unhandled VR in getNumberArray: ' + elem.vr);
