@@ -186,16 +186,6 @@ namespace DICOMSharp.Network.Workers
 
         private void conn_AssociationRequested(DICOMConnection conn)
         {
-            if (VerboseLogging)
-            {
-                foreach (PresentationContext context in conn.PresentationContexts.Values)
-                {
-                    conn.LogLine(LogLevel.Debug, "Presentation Context: " + context.ContextID + ": " + context.AbstractSyntaxSpecified.UidStr);
-                    foreach (TransferSyntax syntax in context.TransferSyntaxesProposed)
-                        conn.LogLine(LogLevel.Debug, "* Transfer Syntax: " + syntax.UidStr);
-                }
-            }
-
             if (AssociationRequest != null)
             {
                 AssociationRequest(conn);
