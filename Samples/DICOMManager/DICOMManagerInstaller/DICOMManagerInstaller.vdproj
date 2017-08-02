@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DF65314ACD6E41BAA079879B52AA65C2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F6288B6B00964BB48EFF1D11B3ECAB0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -393,7 +399,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DICOMManager"
         "ProductCode" = "8:{2A4F6667-D826-4B0A-BB89-341DEFCC11C9}"
-        "PackageCode" = "8:{04997B8A-2998-4CFC-8A2E-06F90F385784}"
+        "PackageCode" = "8:{3869B534-068F-4653-8E46-09BFE38BEFC3}"
         "UpgradeCode" = "8:{05C0E9DF-5C18-4A0F-A6BB-06B7319BD913}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -401,7 +407,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:0.5.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:PACSsoft, LLC."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:DICOMManager"
@@ -909,6 +915,20 @@
         }
         "MergeModule"
         {
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DF65314ACD6E41BAA079879B52AA65C2"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Common Files\\Merge Modules\\Microsoft_VC140_CRT_x86.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:0"
+            "Exclude" = "11:FALSE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
         }
         "ProjectOutput"
         {
