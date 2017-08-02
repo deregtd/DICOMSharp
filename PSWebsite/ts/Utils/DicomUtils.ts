@@ -1,5 +1,9 @@
 ﻿class DicomUtils {
     static GetDateTimeFromTags(date: string, time?: string): Date {
+        if (!date) {
+            return null;
+        }
+        
         date = date.replace(/[^0-9]/g, '');
 
         if (date.length !== 8) {

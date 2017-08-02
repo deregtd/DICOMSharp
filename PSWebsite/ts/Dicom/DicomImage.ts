@@ -184,7 +184,7 @@ class DicomImage {
                 (arr.length > 5 ? ',[' + (arr.length - 5) + ' more]}' : '}');
         }
 
-        return rawData as string;
+        return (rawData as string) || defaultVal;
     }
 
     getNumberOrDefault(tag: string, defaultVal: number = 0): number {
@@ -205,7 +205,7 @@ class DicomImage {
         if (slashIndex >= 0) {
             str = str.substr(0, slashIndex);
         }
-        return Number(str);
+        return Number(str) || defaultVal;
     }
 
     getNumberArray(tag: string): ArrayLike<number> {
