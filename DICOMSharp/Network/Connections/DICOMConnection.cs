@@ -378,7 +378,7 @@ namespace DICOMSharp.Network.Connections
                                 if (verboseLogging)
                                 {
                                     logger.Log(LogLevel.Debug, "Data DICOM:");
-                                    logger.Log(LogLevel.Debug, commandDICOM.Dump());
+                                    logger.Log(LogLevel.Debug, dataDICOM.Dump());
                                 }
 
                                 if (commandDICOM != null)
