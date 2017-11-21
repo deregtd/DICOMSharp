@@ -10,7 +10,7 @@
             return null;
         }
 
-        var outDate = new Date(Number(date.substr(0, 4)), Number(date.substr(4, 2)), Number(date.substr(6, 2)));
+        var outDate = new Date(Number(date.substr(0, 4)), Number(date.substr(4, 2)) - 1, Number(date.substr(6, 2)));
 
         if (time) {
             time = time.replace(/[^0-9\.]/g, '');
