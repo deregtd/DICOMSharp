@@ -849,10 +849,10 @@ namespace PSCommon.Utilities
                 string stuTime = GetTime(data, DICOMTags.StudyTime, true);
 
                 //optional tags
-                string patName = GetTagOrValue(data, DICOMTags.PatientName, "[No Name]");
-                string patID = GetTagOrValue(data, DICOMTags.PatientID, "[No ID]");
-                string patSex = GetTagOrValue(data, DICOMTags.PatientSex, "");
-                string modality = GetTagOrValue(data, DICOMTags.Modality, "UN");
+                string patName = GetTagOrValue(data, DICOMTags.PatientName, "[No Name]", 64);
+                string patID = GetTagOrValue(data, DICOMTags.PatientID, "[No ID]", 64);
+                string patSex = GetTagOrValue(data, DICOMTags.PatientSex, "", 16);
+                string modality = GetTagOrValue(data, DICOMTags.Modality, "UN", 2);
 
                 int seriesNum = 0; int.TryParse(GetTagOrValue(data, DICOMTags.SeriesNumber, "0"), out seriesNum);
                 int instanceNum = 0; int.TryParse(GetTagOrValue(data, DICOMTags.InstanceNumber, "0"), out instanceNum);
