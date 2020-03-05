@@ -31,13 +31,14 @@ InstallIISFeature "IIS-WebServerRole"
 
 
 # AspNetPrerequisites()
+InstallIISFeature "NetFx3"
 InstallIISFeature "IIS-ISAPIFilter"
 InstallIISFeature "IIS-ISAPIExtensions"  
 
 # ASP.NET
 InstallIISFeature "NetFx4Extended-ASPNET45"
 InstallIISFeature "IIS-NetFxExtensibility45"
-InstallIISFeature "IIS-ASPNET45" 
+InstallIISFeature "IIS-ASPNET45"
 InstallIISFeature "IIS-NetFxExtensibility"
 InstallIISFeature "IIS-ASPNET"
 
