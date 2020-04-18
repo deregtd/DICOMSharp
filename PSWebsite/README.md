@@ -24,3 +24,7 @@ If you have any issues with this, feel free to open an issue against this github
 * You can login with the default user of "root" and password "pass" (no quotes on either), which should drop you into an empty query window. At this point, you'll want to close the search window, hit the gear icon in the top right, and open the Server Settings section.
 * From here, you'll want to configure your image storage directory, maximum size for the storage directory so your hard drive doesn't fill up (max of 512GB in this alpha release), usernames/passwords for your viewing users, and remote DICOM devices.
 * Start sending images in and using the system!
+
+# Building By Hand
+
+If you want to run the system by hand, you simply need to run `npm install` and `npm run start` in a command line while in the `PSWebsite` folder, and that should build the app.css and app.js files that the website needs to distribute.
