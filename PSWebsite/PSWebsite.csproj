@@ -155,10 +155,6 @@
     <None Include="js\app.min.js.map" />
     <None Include="Properties\PublishProfiles\fs.pubxml" />
     <None Include="Properties\PublishProfiles\pacssoftdemo.pubxml" />
-    <None Include="compilerconfig.json" />
-    <Content Include="compilerconfig.json.defaults">
-      <DependentUpon>compilerconfig.json</DependentUpon>
-    </Content>
     <Content Include="images\**\*" />
     <Content Include="..\Build\CharLS.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
