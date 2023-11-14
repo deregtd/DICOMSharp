@@ -15,11 +15,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DICOMSharpJPEGCompression",
 		{524BE26D-FC60-4BC4-9100-128A0502FFF7} = {524BE26D-FC60-4BC4-9100-128A0502FFF7}
 	EndProjectSection
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "DICOMSharpDocs", "DICOMSharpDocs.shfbproj", "{F42377FA-5AB4-4C6A-8262-55404E192ECA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7D253498-DB6F-4F71-9755-F2350DF50D43} = {7D253498-DB6F-4F71-9755-F2350DF50D43}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{2C50F2BF-339C-4A42-96AC-EAC5C9F329F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromiscuousArchiver", "Samples\PromiscuousArchiver\PromiscuousArchiver.csproj", "{B5B86DC2-7503-455C-9857-D6D4AB49424A}"
@@ -34,11 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOMManager", "DICOMManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSWebsite", "PSWebsite\PSWebsite.csproj", "{B2DA8BC5-07FD-4AC1-8221-D03B3D85237D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSCommon", "PSCommon\PSCommon.csproj", "{3F3C02AA-9A47-4AE3-AADC-7415D363C8A8}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CharLS_VS2015", "DICOMSharpJPEGCompression\charls-2.0.0\src\CharLS_VS2015.vcxproj", "{524BE26D-FC60-4BC4-9100-128A0502FFF7}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DICOMManagerInstaller", "Samples\DICOMManager\DICOMManagerInstaller\DICOMManagerInstaller.vdproj", "{9A2BDD0B-D692-4BF5-A4A1-1BAF08AEB808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
