@@ -108,7 +108,7 @@ namespace DICOMSharp.Data.Elements
 
         private object data;
 
-        public static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("US"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public readonly static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("US"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }

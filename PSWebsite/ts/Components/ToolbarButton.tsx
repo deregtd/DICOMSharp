@@ -1,13 +1,12 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-//import InlineSVG = require('svg-inline-react');
-import InlineSVG = require('../Utils/InlineSVG');
+import InlineSVG from '../Utils/InlineSVG';
 
 // Force webpack to build LESS files.
 require('../../less/ToolbarButton.less');
 
-interface ToolbarButtonProps extends React.Props<ToolbarButton> {
+interface ToolbarButtonProps extends React.PropsWithChildren {
     className: string;
     src: string;
     title?: string;
@@ -20,7 +19,7 @@ interface ToolbarButtonProps extends React.Props<ToolbarButton> {
     onWheel?: React.EventHandler<React.WheelEvent<any>>;
 }
 
-export class ToolbarButton extends ComponentBase<ToolbarButtonProps, {}> {
+export default class ToolbarButton extends ComponentBase<ToolbarButtonProps, {}> {
     render() {
         let inner: JSX.Element;
         if (this.props.innerText) {
@@ -47,7 +46,7 @@ export class ToolbarButton extends ComponentBase<ToolbarButtonProps, {}> {
     }
 }
 
-interface ToolbarButtonDividerProps extends React.Props<ToolbarButtonDivider> {
+interface ToolbarButtonDividerProps extends React.PropsWithChildren {
     className: string;
 }
 

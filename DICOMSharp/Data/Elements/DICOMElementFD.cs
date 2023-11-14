@@ -66,7 +66,7 @@ namespace DICOMSharp.Data.Elements
 
         private double data;
 
-        public static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("FD"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public readonly static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("FD"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }

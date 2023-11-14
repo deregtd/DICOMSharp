@@ -1,4 +1,4 @@
-﻿class Point3D implements IPoint3D {
+﻿export default class Point3D implements IPoint3D {
     constructor(public xPos: number, public yPos: number, public zPos: number) {
     }
 
@@ -62,5 +62,3 @@
         return new Point3D(a, b, c);
     }
 }
-
-export = Point3D;

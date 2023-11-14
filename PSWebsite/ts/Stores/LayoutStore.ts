@@ -56,4 +56,4 @@ class LayoutStoreImpl extends StoreBase {
     };
 }
 
-export = new LayoutStoreImpl();
+export default new LayoutStoreImpl();

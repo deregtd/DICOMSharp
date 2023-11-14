@@ -1,13 +1,13 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
-import SyncTasks = require('synctasks');
+import * as SyncTasks from 'synctasks';
 
-import DicomImage = require('../Dicom/DicomImage');
-import DicomSeries = require('../Dicom/DicomSeries');
-import DicomSeriesStore = require('./DicomSeriesStore');
-import DicomTags = require('../Utils/DicomTags');
-import DicomUtils = require('../Utils/DicomUtils');
-import PSApiClient = require('../Utils/PSApiClient');
+import DicomImage from '../Dicom/DicomImage';
+import DicomSeries from '../Dicom/DicomSeries';
+import DicomSeriesStore from './DicomSeriesStore';
+import * as DicomTags from '../Utils/DicomTags';
+import * as DicomUtils from '../Utils/DicomUtils';
+import PSApiClient from '../Utils/PSApiClient';
 
 function concatenateBuffers(buffer: Uint8Array, newBuffer: Uint8Array) {
     let joinedBuffer = new Uint8Array(buffer.length + newBuffer.length);
@@ -212,4 +212,4 @@ class ImageDownloadStoreImpl extends StoreBase {
     }
 }
 
-export = new ImageDownloadStoreImpl();
+export default new ImageDownloadStoreImpl();

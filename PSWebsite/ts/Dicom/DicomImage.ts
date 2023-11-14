@@ -1,19 +1,18 @@
-﻿import DicomParser = require('dicom-parser');
-import _ = require('lodash');
+﻿import * as DicomParser from 'dicom-parser';
+import * as _ from 'lodash';
 
-import DicomTags = require('../Utils/DicomTags');
-import DicomUtils = require('../Utils/DicomUtils');
-import Point2D = require('../Utils/Point2D');
-import Point3D = require('../Utils/Point3D');
-import StringUtils = require('../Utils/StringUtils');
-import VRLookup = require('../Utils/VRLookup');
+import * as DicomTags from '../Utils/DicomTags';
+import * as DicomUtils from '../Utils/DicomUtils';
+import Point2D from '../Utils/Point2D';
+import Point3D from '../Utils/Point3D';
+import * as VRLookup from '../Utils/VRLookup';
 
-class DicomImage {
+export default class DicomImage {
     valid = false;
 
     frameData: ArrayLike<number>[] = [];
 
-    private _dataSet: DicomParser.DPDicomDataSet;
+    private _dataSet: DicomParser.DataSet;
 
     // Returns the number of bytes read from the buffer
     parseFromBuffer(buffer: Uint8Array, offset: number = 0): number {
@@ -126,7 +125,7 @@ class DicomImage {
         };
     }
 
-    private _getRawValue(elem: DicomParser.DPDicomElement, index?: number): string|number|Uint8Array|Uint16Array|undefined {
+    private _getRawValue(elem: DicomParser.Element, index?: number): string|number|Uint8Array|Uint16Array|undefined {
         switch (elem.vr || VRLookup.LookupVR(elem.tag)) {
             case 'UL':
                 return this._dataSet.uint32(elem.tag, index);
@@ -535,9 +534,7 @@ class DicomImage {
         return this.imageIntoAbsolute(new Point2D(this.getWidth() / 2, this.getHeight() / 2));
     }
 
-    dumpHeaders(): DicomParser.DPDicomElement[] {
+    dumpHeaders(): DicomParser.Element[] {
         return _.values(this._dataSet.elements);
     }
 }
-
-export = DicomImage;

@@ -1,21 +1,21 @@
-﻿import DicomParser = require('dicom-parser');
-import _ = require('lodash');
-import React = require('react');
+﻿import * as DicomParser from 'dicom-parser';
+import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import DicomImage = require('../Dicom/DicomImage');
-import DisplaySettingsStore = require('../Stores/DisplaySettingsStore');
-import DicomSeriesStore = require('../Stores/DicomSeriesStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PatientContextStore = require('../Stores/PatientContextStore');
-import SeriesPicker = require('./SeriesPicker');
-import ToolbarButton = require('./ToolbarButton');
+import DicomImage from '../Dicom/DicomImage';
+import DisplaySettingsStore from '../Stores/DisplaySettingsStore';
+import DicomSeriesStore from '../Stores/DicomSeriesStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PatientContextStore from '../Stores/PatientContextStore';
+import SeriesPicker from './SeriesPicker';
+import ToolbarButton, { ToolbarButtonDivider } from './ToolbarButton';
 
 // Force webpack to build LESS files.
 require('../../less/ViewerPanelToolbar.less');
 require('../../less/ToolbarButton.less');
 
-interface ViewerPanelToolbarProps extends React.Props<ViewerPanelToolbar> {
+interface ViewerPanelToolbarProps extends React.PropsWithChildren {
     panelIndex: number;
 }
 
@@ -32,7 +32,7 @@ interface ViewerPanelToolbarState {
 
 const FileNameSanitizerRegex = /[^\w., \-]/g;
 
-class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPanelToolbarState> {
+export default class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPanelToolbarState> {
     protected _buildState(props: ViewerPanelToolbarProps): ViewerPanelToolbarState {
         const displaySettings = DisplaySettingsStore.getDisplaySettings(props.panelIndex);
 
@@ -87,21 +87,21 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
 
         if (this.state.seriesInfo) {
             rightTools = [
-                <ToolbarButton.ToolbarButton
+                <ToolbarButton
                     key="ToolbarButton--link"
                     className="link"
                     selected={ this.state.linkedScrolling }
-                    src={ require<string>('../../images/icons/Link.svg') }
+                    src={ require('../../images/icons/Link.svg') }
                     onMouseDown={ this._toggleLink.bind(this) }
                     onTouchStart={ this._toggleLink.bind(this) } />,
 
-                <ToolbarButton.ToolbarButtonDivider className="viewerPanel" key="ToolbarButtonDivider-1" />,
+                <ToolbarButtonDivider className="viewerPanel" key="ToolbarButtonDivider-1" />,
 
-                <ToolbarButton.ToolbarButton
+                <ToolbarButton
                     key="ToolbarButton--more"
                     className="more"
                     selected={ this.state.expanded }
-                    src={ require<string>('../../images/icons/More.svg') }
+                    src={ require('../../images/icons/More.svg') }
                     onMouseDown={ this._moreTools.bind(this) }
                     onTouchStart={ this._moreTools.bind(this) } />
             ];
@@ -115,7 +115,7 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
                         extendedTools.push(tool);
                     });
                     if (i < toolSets.length - 1) {
-                        extendedTools.push(<ToolbarButton.ToolbarButtonDivider className="viewerPanel" key={ 'ToolbarButtonDivider-' + i } />);
+                        extendedTools.push(<ToolbarButtonDivider className="viewerPanel" key={ 'ToolbarButtonDivider-' + i } />);
                     }
                 });
                 toolRow = <div className="ViewerPanelToolbar-extendedTools">{ extendedTools }</div>;
@@ -135,9 +135,9 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
                     <div className="ViewerPanelToolbar-mainRowSeriesinfo"
                         onMouseDown={ this._changeSeries.bind(this) }
                         onTouchStart={ this._changeSeries.bind(this) }>
-                        <ToolbarButton.ToolbarButton
+                        <ToolbarButton
                             className="changeSeries"
-                            src={ require<string>('../../images/icons/List.svg') } />
+                            src={ require('../../images/icons/List.svg') } />
                         { serInfo }
                     </div>
                 </div>
@@ -156,16 +156,16 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
 
     private _getCommandSectionContents(): JSX.Element[] {
         return [
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--saveJpg"
                 className="saveJpg"
-                src={ require<string>('../../images/icons/JPG.svg') }
+                src={ require('../../images/icons/JPG.svg') }
                 onMouseDown={ this._saveJpeg.bind(this) }
                 onTouchStart={ this._saveJpeg.bind(this) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--dicom"
                 className="dicom"
-                src={ require<string>('../../images/icons/DICOM.svg') }
+                src={ require('../../images/icons/DICOM.svg') }
                 onMouseDown={ this._dumpDicom.bind(this) }
                 onTouchStart={ this._dumpDicom.bind(this) } />
         ];
@@ -242,7 +242,7 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
         ModalPopupStore.pushModal(this._dumpDicomSequence(image, image.dumpHeaders()));
     }
 
-    private _dumpDicomSequence(image: DicomImage, dicomElems: DicomParser.DPDicomElement[]): JSX.Element {
+    private _dumpDicomSequence(image: DicomImage, dicomElems: DicomParser.Element[]): JSX.Element {
         let elems: JSX.Element[] = [];
         _.each(dicomElems, element => {
             const group = element.tag.substr(1, 4);
@@ -279,40 +279,40 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
 
     private _getViewSectionContents(): JSX.Element[] {
         return [
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--reset"
                 className="reset"
-                src={ require<string>('../../images/icons/Reset.svg') }
+                src={ require('../../images/icons/Reset.svg') }
                 onMouseDown={ this._resetView.bind(this) }
                 onTouchStart={ this._resetView.bind(this) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--invert"
                 className="invert"
-                src={ require<string>('../../images/icons/Invert.svg') }
+                src={ require('../../images/icons/Invert.svg') }
                 onMouseDown={ this._invertView.bind(this) }
                 onTouchStart={ this._invertView.bind(this) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--rotateClockwise"
                 className="rotateClockwise"
-                src={ require<string>('../../images/icons/RotateClockwise.svg') }
+                src={ require('../../images/icons/RotateClockwise.svg') }
                 onMouseDown={ this._rotateView.bind(this, true) }
                 onTouchStart={ this._rotateView.bind(this, true) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--rotateCounterClockwise"
                 className="rotateCounterClockwise"
-                src={ require<string>('../../images/icons/RotateCounterClockwise.svg') }
+                src={ require('../../images/icons/RotateCounterClockwise.svg') }
                 onMouseDown={ this._rotateView.bind(this, false) }
                 onTouchStart={ this._rotateView.bind(this, false) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--flipHorizontal"
                 className="flipHorizontal"
-                src={ require<string>('../../images/icons/FlipHorizontal.svg') }
+                src={ require('../../images/icons/FlipHorizontal.svg') }
                 onMouseDown={ this._flipView.bind(this, true) }
                 onTouchStart={ this._flipView.bind(this, true) } />,
-            <ToolbarButton.ToolbarButton
+            <ToolbarButton
                 key="ToolbarButton--flipVertical"
                 className="flipVertical"
-                src={ require<string>('../../images/icons/FlipVertical.svg') }
+                src={ require('../../images/icons/FlipVertical.svg') }
                 onMouseDown={ this._flipView.bind(this, false) }
                 onTouchStart={ this._flipView.bind(this, false) } />
         ];
@@ -383,5 +383,3 @@ class ViewerPanelToolbar extends ComponentBase<ViewerPanelToolbarProps, ViewerPa
         DisplaySettingsStore.flipView(this.props.panelIndex, horizontal);
     }
 }
-
-export = ViewerPanelToolbar;

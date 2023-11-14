@@ -1,9 +1,7 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
 
-import DisplaySettingsStore = require('./DisplaySettingsStore');
-import PSApiClient = require('../Utils/PSApiClient');
-import PSUtils = require('../Utils/PSUtils');
+import PSApiClient from '../Utils/PSApiClient';
 
 @AutoSubscribeStore
 class PatientContextStoreImpl extends StoreBase {
@@ -79,4 +77,4 @@ class PatientContextStoreImpl extends StoreBase {
     }
 }
 
-export = new PatientContextStoreImpl();
+export default new PatientContextStoreImpl();

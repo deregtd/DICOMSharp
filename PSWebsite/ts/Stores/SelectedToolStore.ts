@@ -22,4 +22,4 @@ class SelectedToolStoreImpl extends StoreBase {
     }
 }
 
-export = new SelectedToolStoreImpl();
+export default new SelectedToolStoreImpl();

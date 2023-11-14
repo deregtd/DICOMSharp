@@ -70,7 +70,7 @@ namespace DICOMSharp.Data.Elements
             }
         }
 
-        public static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("UI"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public readonly static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("UI"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }

@@ -1,11 +1,11 @@
-﻿import md5 = require('blueimp-md5');
-import React = require('react');
+﻿import md5 from 'blueimp-md5';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import AuthStore = require('../Stores/AuthStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PSApiClient = require('../Utils/PSApiClient');
-import SearchPane = require('./SearchPane');
+import AuthStore from '../Stores/AuthStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PSApiClient from '../Utils/PSApiClient';
+import SearchPane from './SearchPane';
 
 // Force webpack to build LESS files.
 require('../../less/LoginBox.less');
@@ -16,7 +16,7 @@ interface LoginBoxState {
     errorMessage?: string;
 }
 
-class LoginBox extends ComponentBase<{}, LoginBoxState> {
+export default class LoginBox extends ComponentBase<{}, LoginBoxState> {
     protected _buildState(props: {}, initialBuild: boolean): LoginBoxState {
         if (initialBuild) {
             return {
@@ -96,5 +96,3 @@ class LoginBox extends ComponentBase<{}, LoginBoxState> {
         }
     }
 }
-
-export = LoginBox;

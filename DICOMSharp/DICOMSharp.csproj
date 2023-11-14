@@ -1,178 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7D253498-DB6F-4F71-9755-F2350DF50D43}</ProjectGuid>
+    <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DICOMSharp</RootNamespace>
-    <AssemblyName>DICOMSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\Build\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RegisterForComInterop>true</RegisterForComInterop>
-    <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>..\Build\DICOMSharp.XML</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\Build\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>..\Build\DICOMSharp.XML</DocumentationFile>
-    <RegisterForComInterop>true</RegisterForComInterop>
-    <Prefer32Bit>false</Prefer32Bit>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
+    <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq">
+    <Reference Update="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Imaging\RenderAssistant.cs" />
-    <Compile Include="Imaging\SimpleViewerPane.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Imaging\SimpleViewerPane.Designer.cs">
-      <DependentUpon>SimpleViewerPane.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Logging\PrefixingLogger.cs" />
-    <Compile Include="Logging\ConsoleLogger.cs" />
-    <Compile Include="Logging\NullLogger.cs" />
-    <Compile Include="Network\Connections\ApplicationEntity.cs" />
-    <Compile Include="Network\QueryRetrieve\QREnums.cs" />
-    <Compile Include="Network\QueryRetrieve\QRRequestData.cs" />
-    <Compile Include="Network\QueryRetrieve\QRResponseData.cs" />
-    <Compile Include="Network\QueryRetrieve\SendableImage.cs" />
-    <Compile Include="Network\Workers\DICOMMover.cs" />
-    <Compile Include="Network\Workers\DICOMFinder.cs" />
-    <Compile Include="Network\Workers\DICOMSCU.cs" />
-    <Compile Include="Network\Workers\DICOMSender.cs" />
-    <Compile Include="Tests\CompressionTest.cs" />
-    <Compile Include="Data\Compression\CompressionInfo.cs" />
-    <Compile Include="Data\Compression\CompressionWorker.cs" />
-    <Compile Include="Data\Dictionary\DataDictionary.cs" />
-    <Compile Include="Data\Dictionary\DataDictionaryElement.cs" />
-    <Compile Include="Data\DICOMData.cs" />
-    <Compile Include="Data\Elements\DICOMElementSQ.cs" />
-    <Compile Include="Data\Elements\DICOMElementUT.cs" />
-    <Compile Include="Data\Elements\DICOMElementUN.cs" />
-    <Compile Include="Data\Elements\DICOMElementUI.cs" />
-    <Compile Include="Data\Elements\DICOMElementTM.cs" />
-    <Compile Include="Data\Elements\DICOMElementST.cs" />
-    <Compile Include="Data\Elements\DICOMElementSH.cs" />
-    <Compile Include="Data\Elements\DICOMElementPN.cs" />
-    <Compile Include="Data\Elements\DICOMElementOW.cs" />
-    <Compile Include="Data\Elements\DICOMElementUS.cs" />
-    <Compile Include="Data\Elements\DICOMElementLT.cs" />
-    <Compile Include="Data\Elements\DICOMElementLO.cs" />
-    <Compile Include="Data\Elements\DICOMElementIS.cs" />
-    <Compile Include="Data\Elements\DICOMElementFD.cs" />
-    <Compile Include="Data\Elements\DICOMElementFL.cs" />
-    <Compile Include="Data\Elements\DICOMElementDT.cs" />
-    <Compile Include="Data\Elements\DICOMElementDS.cs" />
-    <Compile Include="Data\Elements\DICOMElementDA.cs" />
-    <Compile Include="Data\Elements\DICOMElementCS.cs" />
-    <Compile Include="Data\Elements\DICOMElementAT.cs" />
-    <Compile Include="Data\Elements\DICOMElementAS.cs" />
-    <Compile Include="Data\Elements\DICOMElementString.cs" />
-    <Compile Include="Data\Elements\DICOMElementAE.cs" />
-    <Compile Include="Data\Elements\DICOMElementSS.cs" />
-    <Compile Include="Data\Elements\DICOMElementOB.cs" />
-    <Compile Include="Data\Elements\DICOMElementSL.cs" />
-    <Compile Include="Data\Elements\DICOMElement.cs" />
-    <Compile Include="Data\Elements\DICOMElementUL.cs" />
-    <Compile Include="Data\Elements\SQItem.cs" />
-    <Compile Include="Data\MSBSwapper.cs" />
-    <Compile Include="Data\Tags\DICOMTags.cs" />
-    <Compile Include="Data\Transfers\TransferSyntax.cs" />
-    <Compile Include="Data\Transfers\TransferSyntaxes.cs" />
-    <Compile Include="Data\Uid.cs" />
-    <Compile Include="Logging\ILogger.cs" />
-    <Compile Include="Logging\LogLevel.cs" />
-    <Compile Include="Logging\SubscribableListener.cs" />
-    <Compile Include="Network\Abstracts\AbstractSyntax.cs" />
-    <Compile Include="Network\Connections\AssociationEnums.cs" />
-    <Compile Include="Network\Connections\DICOMConnection.cs" />
-    <Compile Include="Network\Connections\ConnectionEnums.cs" />
-    <Compile Include="Network\Presentations\PresentationContext.cs" />
-    <Compile Include="Network\Abstracts\AbstractSyntaxes.cs" />
-    <Compile Include="Network\Presentations\PresentationResult.cs" />
-    <Compile Include="Network\Workers\DICOMEchoer.cs" />
-    <Compile Include="Network\Workers\DICOMListener.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\AssociationItemBuilder.cs" />
-    <Compile Include="Imaging\DICOMQuickRenderer.cs" />
-    <Compile Include="Util\FileUtil.cs" />
-    <Compile Include="Util\PDUBuilder.cs" />
-    <Compile Include="Util\DateUtil.cs" />
-    <Compile Include="Util\SwappableBinaryReader.cs" />
-    <Compile Include="Util\SwappableBinaryWriter.cs" />
-    <Compile Include="Util\StringUtil.cs" />
+    <PackageReference Include="CSJ2K" Version="3.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Imaging\SimpleViewerPane.resx">
-      <DependentUpon>SimpleViewerPane.cs</DependentUpon>
-    </EmbeddedResource>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="NUnit" Version="3.9.0" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -27,13 +27,13 @@ namespace DICOMManager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
-            this.menuItem5 = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IntPanel = new System.Windows.Forms.Panel();
             this.SendAllTo = new System.Windows.Forms.Button();
             this.SendAnon = new System.Windows.Forms.ComboBox();
@@ -70,6 +70,7 @@ namespace DICOMManager
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.DebugText = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.menuStrip1.SuspendLayout();
             this.IntPanel.SuspendLayout();
             this.TypeTab.SuspendLayout();
             this.CDROMTab.SuspendLayout();
@@ -78,51 +79,62 @@ namespace DICOMManager
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainMenu1
+            // menuStrip1
             // 
-            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem3,
-            this.menuItem5});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(628, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // menuItem1
+            // fileToolStripMenuItem
             // 
-            this.menuItem1.Index = 0;
-            this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem2});
-            this.menuItem1.Text = "&File";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
             // 
-            // menuItem2
+            // exitToolStripMenuItem
             // 
-            this.menuItem2.Index = 0;
-            this.menuItem2.Text = "E&xit";
-            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.menuItem2_Click);
             // 
-            // menuItem3
+            // toolsToolStripMenuItem
             // 
-            this.menuItem3.Index = 1;
-            this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem4});
-            this.menuItem3.Text = "&Tools";
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.toolsToolStripMenuItem.Text = "&File";
             // 
-            // menuItem4
+            // optionsToolStripMenuItem
             // 
-            this.menuItem4.Index = 0;
-            this.menuItem4.Text = "&Options";
-            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.menuItem4_Click);
             // 
-            // menuItem5
+            // helpToolStripMenuItem
             // 
-            this.menuItem5.Index = 2;
-            this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem6});
-            this.menuItem5.Text = "&Help";
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // menuItem6
+            // aboutToolStripMenuItem
             // 
-            this.menuItem6.Index = 0;
-            this.menuItem6.Text = "&About";
-            this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "&Options";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.menuItem6_Click);
             // 
             // IntPanel
             // 
@@ -539,7 +551,8 @@ namespace DICOMManager
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.ClientSize = new System.Drawing.Size(798, 552);
             this.Controls.Add(this.IntPanel);
-            this.Menu = this.mainMenu1;
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(353, 312);
             this.Name = "Form1";
             this.Text = "DICOM Manager";
@@ -552,16 +565,20 @@ namespace DICOMManager
             this.MemoryTab.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-
+            this.PerformLayout();
         }
         #endregion
 
-        private System.Windows.Forms.MainMenu mainMenu1;
-        private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.MenuItem menuItem4;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Panel IntPanel;
         private System.Windows.Forms.ComboBox SendAnon;
         private System.Windows.Forms.ListView SendList;
@@ -584,8 +601,6 @@ namespace DICOMManager
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox DebugText;
         private System.Windows.Forms.Button SendAllTo;
-        private System.Windows.Forms.MenuItem menuItem5;
-        private System.Windows.Forms.MenuItem menuItem6;
         private System.Windows.Forms.Button CDViewSeries;
         private System.Windows.Forms.Button FilesViewSel;
         private System.Windows.Forms.Button AddFiles;

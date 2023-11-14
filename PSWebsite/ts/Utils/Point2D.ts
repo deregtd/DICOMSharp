@@ -1,4 +1,4 @@
-﻿class Point2D implements IPoint2D{
+﻿export default class Point2D implements IPoint2D{
     constructor(public xPos: number, public yPos: number) {
     }
 
@@ -23,5 +23,3 @@
         return new Point2D(this.xPos / len, this.yPos / len);
     }
 }
-
-export = Point2D;

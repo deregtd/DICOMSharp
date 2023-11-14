@@ -1,6 +1,6 @@
 ﻿import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
 
-import PSApiClient = require('../Utils/PSApiClient');
+import PSApiClient from '../Utils/PSApiClient';
 
 declare var givenUser: UserInfo;
 
@@ -39,4 +39,4 @@ class AuthStoreImpl extends StoreBase {
     }
 }
 
-export = new AuthStoreImpl();
+export default new AuthStoreImpl();

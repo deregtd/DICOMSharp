@@ -8,11 +8,14 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DICOMSharpTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("PACSsoft, LLC.")]
 [assembly: AssemblyProduct("DICOMSharpTests")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
+[assembly: AssemblyCopyright("Copyright © PACSsoft 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+// Only windows!
+[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("windows")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

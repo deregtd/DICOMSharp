@@ -1,4 +1,4 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribeWithKey } from 'resub';
 
 const MIN_IMAGE_WIDTH = 300;
@@ -111,7 +111,7 @@ class ResponsiveDesignStoreImpl extends StoreBase {
                         this._mouseDetected = true;
                         document.body.removeEventListener('mousemove', mouseMoveHandler);
                         this.trigger(TriggerKeys.MouseDetected);
-                    }, 1000);
+                    }, 1000) as unknown as number;
                 }
             }
         };

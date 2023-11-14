@@ -1,4 +1,4 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 
 // Taken from svg-inline-react and transcoded into typescript so it is minifiable
 
@@ -27,15 +27,15 @@ function switchSVGAttrToReactProp(propName: any) {
     }
 }
 
-interface InlineSVGProps extends React.Props<any> {
+interface InlineSVGProps extends React.PropsWithChildren {
     src: string;
     element?: string;
     raw?: boolean;
 }
 
-class InlineSVG extends React.Component<InlineSVGProps, {}> {
+export default class InlineSVG extends React.Component<InlineSVGProps, {}> {
     private _serializeAttrs(map: any) {
-        var ret = {};
+        var ret: {[key:string]:string} = {};
         var prop: any;
         for (var i = 0; i < map.length; i++) {
             prop = switchSVGAttrToReactProp(map[i].name);
@@ -81,5 +81,3 @@ class InlineSVG extends React.Component<InlineSVGProps, {}> {
         }));
     }
 }
-
-export = InlineSVG;

@@ -1,15 +1,15 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import DisplaySettingsStore = require('../Stores/DisplaySettingsStore');
-import LightBox = require('./LightBox');
-import ViewerPanelLayoutStore = require('../Stores/ViewerPanelLayoutStore');
-import ViewerPanelToolbar = require('./ViewerPanelToolbar');
+import DisplaySettingsStore from '../Stores/DisplaySettingsStore';
+import LightBox from './LightBox';
+import ViewerPanelLayoutStore from '../Stores/ViewerPanelLayoutStore';
+import ViewerPanelToolbar from './ViewerPanelToolbar';
 
 // Force webpack to build LESS files.
 require('../../less/ViewerPanel.less');
 
-interface ViewerPanelProps extends React.Props<ViewerPanel> {
+interface ViewerPanelProps extends React.PropsWithChildren {
     panelIndex: number;
 }
 
@@ -23,7 +23,7 @@ interface ViewerPanelState {
     height?: number;
 }
 
-class ViewerPanel extends ComponentBase<ViewerPanelProps, ViewerPanelState> {
+export default class ViewerPanel extends ComponentBase<ViewerPanelProps, ViewerPanelState> {
     protected _buildState(props: ViewerPanelProps, initialBuild: boolean): ViewerPanelState {
         const layout = ViewerPanelLayoutStore.getPanelLayout(this.props.panelIndex);
 
@@ -65,5 +65,3 @@ class ViewerPanel extends ComponentBase<ViewerPanelProps, ViewerPanelState> {
             </div>;
     }
 }
-
-export = ViewerPanel;

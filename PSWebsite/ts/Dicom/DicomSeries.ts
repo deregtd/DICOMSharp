@@ -1,8 +1,8 @@
-﻿import DicomImage = require('./DicomImage');
-import DicomTags = require('../Utils/DicomTags');
-import DicomUtils = require('../Utils/DicomUtils');
-import Point2D = require('../Utils/Point2D');
-import Point3D = require('../Utils/Point3D');
+﻿import DicomImage from './DicomImage';
+import * as DicomTags from '../Utils/DicomTags';
+import * as DicomUtils from '../Utils/DicomUtils';
+import Point2D from '../Utils/Point2D';
+import Point3D from '../Utils/Point3D';
 
 interface CongruentImage {
     dicomImage: DicomImage;
@@ -18,7 +18,7 @@ interface CongruentSet {
     zOffsetMaxSetIndex: number;
 }
 
-class DicomSeries {
+export default class DicomSeries {
     dicomImages: DicomImage[] = [];
     congruentSets: CongruentSet[] = [];
 
@@ -182,5 +182,3 @@ class DicomSeries {
         return new Point3D(0, 0, 0);
     }
 }
-
-export = DicomSeries;

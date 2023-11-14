@@ -1,8 +1,8 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import LayoutStore = require('../Stores/LayoutStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
+import LayoutStore from '../Stores/LayoutStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from '../Stores/ResponsiveDesignStore';
 
 // Force webpack to build LESS files.
@@ -16,7 +16,7 @@ interface LayoutPickerState {
     arrayMode?: boolean;
 }
 
-class LayoutPicker extends ComponentBase<{}, LayoutPickerState> {
+export default class LayoutPicker extends ComponentBase<{}, LayoutPickerState> {
     protected /* virtual */ _buildState(props: {}, initialBuild: boolean): LayoutPickerState {
         let newState: LayoutPickerState = LayoutStore.getLayout();
 
@@ -61,5 +61,3 @@ class LayoutPicker extends ComponentBase<{}, LayoutPickerState> {
         ModalPopupStore.popModal();
     }
 }
-
-export = LayoutPicker;

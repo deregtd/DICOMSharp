@@ -1,13 +1,13 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import ModalPopupStore = require('../Stores/ModalPopupStore');
+import ModalPopupStore from '../Stores/ModalPopupStore';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from '../Stores/ResponsiveDesignStore';
 
 // Force webpack to build LESS files.
 require('../../less/ModalPopup.less');
 
-interface ModalPopupProps extends React.Props<ModalPopup> {
+interface ModalPopupProps extends React.PropsWithChildren {
     canClickOut: boolean;
     fullScreenOnResponsive: boolean;
 }
@@ -16,7 +16,7 @@ interface ModalPopupState {
     fullScreen?: boolean;
 }
 
-class ModalPopup extends ComponentBase<ModalPopupProps, ModalPopupState> {
+export default class ModalPopup extends ComponentBase<ModalPopupProps, ModalPopupState> {
     protected _buildState(props: ModalPopupProps, initialBuild: boolean): ModalPopupState {
         return {
             fullScreen: this.props.fullScreenOnResponsive &&
@@ -69,5 +69,3 @@ class ModalPopup extends ComponentBase<ModalPopupProps, ModalPopupState> {
         e.preventDefault();
     }
 }
-
-export = ModalPopup;

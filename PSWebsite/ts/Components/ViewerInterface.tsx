@@ -1,13 +1,13 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import DownloadProgress = require('./DownloadProgress');
-import LayoutStore = require('../Stores/LayoutStore');
-import MasterToolbar = require('./MasterToolbar');
-import ModalPopup = require('./ModalPopup');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
+import DownloadProgress from './DownloadProgress';
+import LayoutStore from '../Stores/LayoutStore';
+import MasterToolbar from './MasterToolbar';
+import ModalPopup from './ModalPopup';
+import ModalPopupStore from '../Stores/ModalPopupStore';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from '../Stores/ResponsiveDesignStore';
-import ViewerPanel = require('./ViewerPanel');
+import ViewerPanel from './ViewerPanel';
 
 // Force webpack to build LESS files.
 require('../../less/ViewerInterface.less');
@@ -18,7 +18,7 @@ interface ViewerInterfaceState {
     reservedToolbarHeight?: number;
 }
 
-class ViewerInterface extends ComponentBase<{}, ViewerInterfaceState> {
+export default class ViewerInterface extends ComponentBase<{}, ViewerInterfaceState> {
     protected /* virtual */ _buildState(props: {}, initialBuild: boolean): ViewerInterfaceState {
         const layout = LayoutStore.getLayout();
 
@@ -57,5 +57,3 @@ class ViewerInterface extends ComponentBase<{}, ViewerInterfaceState> {
         );
     }
 }
-
-export = ViewerInterface;

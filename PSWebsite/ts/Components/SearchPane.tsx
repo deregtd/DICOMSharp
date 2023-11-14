@@ -1,18 +1,18 @@
-﻿import _ = require('lodash');
-import React = require('react');
+﻿import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import PatientContextStore = require('../Stores/PatientContextStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PSApiClient = require('../Utils/PSApiClient');
-import PSUtils = require('../Utils/PSUtils');
-import SelectEntityPanel = require('../Components/SelectEntityPanel');
-import StringUtils = require('../Utils/StringUtils');
+import PatientContextStore from '../Stores/PatientContextStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PSApiClient from '../Utils/PSApiClient';
+import * as PSUtils from '../Utils/PSUtils';
+import SelectEntityPanel from '../Components/SelectEntityPanel';
+import * as StringUtils from '../Utils/StringUtils';
 
 // Force webpack to build LESS files.
 require('../../less/SearchPane.less');
 
-interface SearchPaneProps {
+interface SearchPaneProps extends React.PropsWithChildren {
     adminMode?: boolean;
 }
 
@@ -38,7 +38,7 @@ interface SearchData {
     accession: string;
 }
 
-class SearchPane extends ComponentBase<SearchPaneProps, SearchPaneState> {
+export default class SearchPane extends ComponentBase<SearchPaneProps, SearchPaneState> {
     static showPopup(adminMode?: boolean) {
         ModalPopupStore.pushModal(<SearchPane adminMode={ adminMode } />, true, true);
     }
@@ -136,7 +136,7 @@ class SearchPane extends ComponentBase<SearchPaneProps, SearchPaneState> {
 
         return <div className="SearchPane">
             { commandRow }
-            <table className="SearchTable" cellSpacing="0" cellPadding="0" frameBorder="0">
+            <table className="SearchTable" cellSpacing="0" cellPadding="0" frame={false} border={0}>
                 <thead>
                     <tr>
                         { this.props.adminMode ? <td className="SearchTable-head">&nbsp;</td> : undefined }
@@ -195,5 +195,3 @@ class SearchPane extends ComponentBase<SearchPaneProps, SearchPaneState> {
         PSApiClient.deleteStudies(studyUIDs);
     };
 }
-
-export = SearchPane;

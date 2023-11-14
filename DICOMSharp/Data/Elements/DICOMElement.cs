@@ -157,7 +157,10 @@ namespace DICOMSharp.Data.Elements
         /// The Value Representation of the Element
         /// </summary>
         abstract public string VR { get; }
-        abstract internal ushort VRShort { get; }
+        /// <summary>
+        /// The Value Representation of the Element in 2-byte (ushort) format
+        /// </summary>
+        abstract public ushort VRShort { get; }
 
         /// <summary>
         /// Gets a string representation of the internal data of the element

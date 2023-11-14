@@ -1,15 +1,14 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import PatientContextStore = require('../Stores/PatientContextStore');
-import DisplaySettingsStore = require('../Stores/DisplaySettingsStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import StringUtils = require('../Utils/StringUtils');
+import PatientContextStore from '../Stores/PatientContextStore';
+import DisplaySettingsStore from '../Stores/DisplaySettingsStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
 
 // Force webpack to build LESS files.
 require('../../less/SeriesPicker.less');
 
-interface SeriesPickerProps extends React.Props<any> {
+interface SeriesPickerProps extends React.PropsWithChildren {
     panelIndex: number;
 }
 
@@ -19,7 +18,7 @@ interface SeriesPickerState {
     studyInfo?: PSStudySnapshot;
 }
 
-class SeriesPicker extends ComponentBase<SeriesPickerProps, SeriesPickerState> {
+export default class SeriesPicker extends ComponentBase<SeriesPickerProps, SeriesPickerState> {
     static showPopup(panelIndex: number) {
         ModalPopupStore.pushModal(<SeriesPicker panelIndex={ panelIndex } />);
     }
@@ -75,5 +74,3 @@ class SeriesPicker extends ComponentBase<SeriesPickerProps, SeriesPickerState> {
         );
     }
 }
-
-export = SeriesPicker;

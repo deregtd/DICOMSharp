@@ -21,6 +21,8 @@ namespace PromiscuousArchiver
             listener.StoreRequest += new DICOMListener.StoreRequestHandler(listener_StoreRequest);
             listener.AssociationRequest += new DICOMListener.BasicConnectionHandler(listener_AssociationRequest);
             listener.FindRequest += new DICOMListener.QRRequestHandler(listener_FindRequest);
+
+            Console.ReadKey();
         }
 
         static QRResponseData listener_FindRequest(DICOMConnection conn, QRRequestData request)

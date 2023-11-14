@@ -85,7 +85,6 @@ namespace DICOMManager
             public string[] SendIDs;
             public int Sent;
             public bool Send;
-            public StatusBar bar;
         };
 
         private Dictionary<DICOMConnection, cTransfer> IncomingStores = new Dictionary<DICOMConnection, cTransfer>();
