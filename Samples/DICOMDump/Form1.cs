@@ -27,20 +27,21 @@ namespace DICOMDump
         private string CurFName;
 
         private System.Windows.Forms.TreeView DICOMTree;
-        private System.Windows.Forms.MainMenu mainMenu1;
-        private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.MenuItem menuItem4;
+
         private IContainer components;
         private System.Windows.Forms.OpenFileDialog oFD1;
-        private System.Windows.Forms.MenuItem menuItem5;
-
         private System.Windows.Forms.SaveFileDialog sFD1;
-        private System.Windows.Forms.MenuItem menuItem7;
-        private System.Windows.Forms.MenuItem menuItem6;
-        private MenuItem menuItem8;
-        private MenuItem menuItem9;
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem anonymizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uncompressToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compressJ2kToolStripMenuItem;
 
         private DICOMData CurDCM;
 
@@ -80,18 +81,20 @@ namespace DICOMDump
         {
             this.components = new System.ComponentModel.Container();
             this.DICOMTree = new System.Windows.Forms.TreeView();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.menuItem5 = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.oFD1 = new System.Windows.Forms.OpenFileDialog();
             this.sFD1 = new System.Windows.Forms.SaveFileDialog();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
+         
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anonymizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uncompressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compressJ2kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.SuspendLayout();
             // 
             // DICOMTree
@@ -100,90 +103,106 @@ namespace DICOMDump
             this.DICOMTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DICOMTree.Location = new System.Drawing.Point(0, 7);
+            this.DICOMTree.Location = new System.Drawing.Point(0, 20);
             this.DICOMTree.Name = "DICOMTree";
             this.DICOMTree.Size = new System.Drawing.Size(657, 449);
             this.DICOMTree.TabIndex = 0;
             this.DICOMTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.DICOMTree_DragDrop);
             this.DICOMTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.DICOMTree_DragEnter);
             // 
-            // mainMenu1
+            // menuStrip1
             // 
-            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem7});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(628, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // menuItem1
+            // fileToolStripMenuItem
             // 
-            this.menuItem1.Index = 0;
-            this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem2,
-            this.menuItem5,
-            this.menuItem3,
-            this.menuItem4});
-            this.menuItem1.Text = "&File";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
             // 
-            // menuItem2
+            // openToolStripMenuItem
             // 
-            this.menuItem2.Index = 0;
-            this.menuItem2.Text = "&Open";
-            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.menuItem2_Click);
             // 
-            // menuItem5
+            // saveToolStripMenuItem
             // 
-            this.menuItem5.Index = 1;
-            this.menuItem5.Text = "&Save";
-            this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.menuItem5_Click);
             // 
-            // menuItem3
+            // toolStripMenuItem1
             // 
-            this.menuItem3.Index = 2;
-            this.menuItem3.Text = "-";
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
-            // menuItem4
+            // exitToolStripMenuItem
             // 
-            this.menuItem4.Index = 3;
-            this.menuItem4.Text = "E&xit";
-            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.menuItem4_Click);
             // 
-            // menuItem7
+            // toolsToolStripMenuItem
             // 
-            this.menuItem7.Index = 1;
-            this.menuItem7.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem8,
-            this.menuItem6,
-            this.menuItem9});
-            this.menuItem7.Text = "&Tools";
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.anonymizeToolStripMenuItem,
+            uncompressToolStripMenuItem,
+            compressJ2kToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
             // 
-            // menuItem6
+            // anonymizeToolStripMenuItem
             // 
-            this.menuItem6.Index = 1;
-            this.menuItem6.Text = "&Anonymize";
-            this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
+            this.anonymizeToolStripMenuItem.Name = "anonymizeToolStripMenuItem";
+            this.anonymizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.anonymizeToolStripMenuItem.Text = "&Anonymize";
+            this.anonymizeToolStripMenuItem.Click += new System.EventHandler(this.menuItem6_Click);
             // 
-            // menuItem8
+            // uncompressToolStripMenuItem
             // 
-            this.menuItem8.Index = 0;
-            this.menuItem8.Text = "&Uncompress";
-            this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
+            this.uncompressToolStripMenuItem.Name = "uncompressToolStripMenuItem";
+            this.uncompressToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uncompressToolStripMenuItem.Text = "&Uncompress";
+            this.uncompressToolStripMenuItem.Click += new System.EventHandler(this.menuItem8_Click);
             // 
-            // menuItem9
+            // compressJ2kToolStripMenuItem
             // 
-            this.menuItem9.Index = 2;
-            this.menuItem9.Text = "&Compress J2K";
-            this.menuItem9.Click += new System.EventHandler(this.menuItem9_Click);
+            this.compressJ2kToolStripMenuItem.Name = "compressJ2kToolStripMenuItem";
+            this.compressJ2kToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compressJ2kToolStripMenuItem.Text = "&Compress J2k";
+            this.compressJ2kToolStripMenuItem.Click += new System.EventHandler(this.menuItem9_Click);
             // 
             // Form1
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(658, 458);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(628, 477);
             this.Controls.Add(this.DICOMTree);
-            this.Menu = this.mainMenu1;
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "DICOM Dump";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-
+            this.PerformLayout();
         }
         #endregion
 

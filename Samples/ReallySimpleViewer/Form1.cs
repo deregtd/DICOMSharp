@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DICOMSharp.Data;
 using DICOMSharp.Imaging;
+using DICOMSharpControls.Imaging;
 using DICOMSharp.Data.Tags;
 using DICOMSharp.Logging;
 

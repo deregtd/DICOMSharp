@@ -29,7 +29,7 @@ namespace DICOMManager
         private void InitializeComponent()
         {
             this.LoadProgress = new System.Windows.Forms.ProgressBar();
-            this.simpleViewerPane1 = new DICOMSharp.Imaging.SimpleViewerPane();
+            this.simpleViewerPane1 = new DICOMSharpControls.Imaging.SimpleViewerPane();
             this.SuspendLayout();
             // 
             // LoadProgress
@@ -65,6 +65,6 @@ namespace DICOMManager
         #endregion
 
         private System.Windows.Forms.ProgressBar LoadProgress;
-        private DICOMSharp.Imaging.SimpleViewerPane simpleViewerPane1;
+        private DICOMSharpControls.Imaging.SimpleViewerPane simpleViewerPane1;
     }
 }

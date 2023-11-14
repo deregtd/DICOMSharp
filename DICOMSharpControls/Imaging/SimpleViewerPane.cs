@@ -19,6 +19,8 @@ namespace DICOMSharpControls.Imaging
         /// </summary>
         public SimpleViewerPane()
         {
+            this.InitializeComponent();
+
             MouseWheel += new MouseEventHandler(SimpleViewerPane_MouseWheel);
 
             SetStyle(ControlStyles.UserPaint, true);
