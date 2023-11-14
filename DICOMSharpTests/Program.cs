@@ -11,7 +11,7 @@ using DICOMSharp.Data.Tags;
 using DICOMSharp.Util;
 using System.Drawing;
 using System.Drawing.Imaging;
-using DICOMSharp.Imaging;
+using DICOMSharpControls.Imaging;
 
 namespace DICOMSharpTests
 {

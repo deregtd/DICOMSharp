@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <OutputType>Exe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DICOMSharpControls\DICOMSharpControls.csproj" />
     <ProjectReference Include="..\DICOMSharp\DICOMSharp.csproj" />
   </ItemGroup>
   <ItemGroup>

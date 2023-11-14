@@ -5,6 +5,8 @@ using DICOMSharp.Data.Transfers;
 using DICOMSharp.Data.Tags;
 using DICOMSharp.Data.Elements;
 using System.IO;
+using System.Drawing;
+using System.Reflection;
 
 namespace DICOMSharp.Data.Compression
 {
@@ -327,18 +329,35 @@ namespace DICOMSharp.Data.Compression
 
         private static byte[] UncompressData(byte[] inData, CompressionInfo compressionInfo, int width, int height, int bitsAllocated, int samplesPerPixel, int planarConfiguration, bool ybr)
         {
+            if (compressionInfo == CompressionInfo.JPEG2000)
+            {
+                // Pull it out of the internal data field with reflection because the library doesn't seem to have a good way to get at this data :/
+                var d = CSJ2K.J2kImage.FromBytes(inData);
+                var data = (int[])typeof(CSJ2K.Util.PortableImage).GetField("<Data>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(d);
+                if (bitsAllocated == 16)
+                {
+                    var oData = new byte[2 * width * height];
+                    for (int i = 0; i<width*height; i++)
+                    {
+                        var v = data[i];
+                        oData[2 * i] = (byte)v;
+                        oData[2 * i + 1] = (byte)(v >> 8);
+                    }
+                    return oData;
+                } else {
+                    throw new NotImplementedException("Only support 16-allocated-bits right now");
+                }
+            }
             unsafe
             {
-                if (compressionInfo == CompressionInfo.JPEG2000 || compressionInfo == CompressionInfo.JPEGLossless || compressionInfo == CompressionInfo.JPEGLossy
+                if (compressionInfo == CompressionInfo.JPEGLossless || compressionInfo == CompressionInfo.JPEGLossy
                     || compressionInfo == CompressionInfo.JPEGLSLossless || compressionInfo == CompressionInfo.JPEGLSLossy) //jpeg-ls seems to work too. neat.
                 {
                     fixed (byte* pInData = inData)
                     {
                         int lenOut = 0;
                         byte* dataOut = null;
-                        if (compressionInfo == CompressionInfo.JPEG2000)
-                            dataOut = (byte*)UncompressJ2K((IntPtr)pInData, inData.Length, bitsAllocated, width, height, samplesPerPixel, planarConfiguration, ref lenOut);
-                        else if (compressionInfo == CompressionInfo.JPEGLSLossless || compressionInfo == CompressionInfo.JPEGLSLossy)
+                        if (compressionInfo == CompressionInfo.JPEGLSLossless || compressionInfo == CompressionInfo.JPEGLSLossy)
                             dataOut = (byte*)UncompressJPEGLS((IntPtr)pInData, inData.Length, bitsAllocated, width, height, samplesPerPixel, planarConfiguration, ref lenOut);
                         else
                             dataOut = (byte*)UncompressJPEG((IntPtr)pInData, inData.Length, bitsAllocated, width, height, samplesPerPixel, planarConfiguration, ybr, ref lenOut);
@@ -434,9 +453,6 @@ namespace DICOMSharp.Data.Compression
             int samplesPerPixel, int planarConfiguration, bool ybr, ref int lenOut);
         [DllImport("DICOMSharpJPEGCompression.dll", EntryPoint = "?UncompressJPEGLS@@YAPAEPAEHHHHHHPAH@Z", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr UncompressJPEGLS(IntPtr dataIn, int length, int bitsAllocated, int width, int height,
-            int samplesPerPixel, int planarConfiguration, ref int lenOut);
-        [DllImport("DICOMSharpJPEGCompression.dll", EntryPoint = "?UncompressJ2K@@YAPAEPAEHHHHHHPAH@Z", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr UncompressJ2K(IntPtr dataIn, int length, int bitsAllocated, int width, int height,
             int samplesPerPixel, int planarConfiguration, ref int lenOut);
 
         [DllImport("DICOMSharpJPEGCompression.dll", EntryPoint = "?CompressJPEG@@YAPAEPAEHHHHHHHHPAH@Z", CallingConvention = CallingConvention.Cdecl)]

@@ -19,14 +19,6 @@
     <ProjectReference Include="..\DICOMSharp\DICOMSharp.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Update="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Update="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Imaging\SimpleViewerPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
