@@ -1,4 +1,4 @@
-﻿namespace DICOMSharp.Imaging
+﻿namespace DICOMSharpControls.Imaging
 {
     partial class SimpleViewerPane
     {

@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using DICOMSharp.Data;
 using System.Diagnostics;
+using DICOMSharp.Imaging;
 
-namespace DICOMSharp.Imaging
+namespace DICOMSharpControls.Imaging
 {
     /// <summary>
     /// This simple control is a very simple DICOM Viewer.  You can attach <see cref="DICOMData"/>s to it and
@@ -18,8 +19,6 @@ namespace DICOMSharp.Imaging
         /// </summary>
         public SimpleViewerPane()
         {
-            InitializeComponent();
-
             MouseWheel += new MouseEventHandler(SimpleViewerPane_MouseWheel);
 
             SetStyle(ControlStyles.UserPaint, true);

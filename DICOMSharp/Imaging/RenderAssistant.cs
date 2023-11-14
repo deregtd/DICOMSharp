@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using DICOMSharp.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using DICOMSharp.Data.Tags;
 using DICOMSharp.Data.Elements;
 using DICOMSharp.Util;
+using System.Drawing.Imaging;
 
 namespace DICOMSharp.Imaging
 {

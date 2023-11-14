@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PACSsoft, LLC.")]
 [assembly: AssemblyProduct("DICOMSharp")]
-[assembly: AssemblyCopyright("Copyright © PACSsoft, LLC. 2015")]
+[assembly: AssemblyCopyright("Copyright © PACSsoft, LLC. 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
