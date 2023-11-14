@@ -3,7 +3,7 @@ using DICOMSharp.Data;
 using DICOMSharp.Data.Tags;
 
 
-namespace DICOMSharp.Imaging
+namespace DICOMSharpControls.Imaging
 {
     /// <summary>
     /// This class is intended to do quick renders of DICOM images for preview generation/thumbnail generation/etc.

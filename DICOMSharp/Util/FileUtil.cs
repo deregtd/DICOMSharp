@@ -123,7 +123,7 @@ namespace DICOMSharp.Util
 
             finalPath += instanceStr + "_";
 
-            byte[] md5instance = new MD5CryptoServiceProvider().ComputeHash(
+            byte[] md5instance = MD5.Create().ComputeHash(
                 Encoding.ASCII.GetBytes(instanceUID));
             finalPath += StringUtil.MakeByteHexString(md5instance) + ".dcm";
 

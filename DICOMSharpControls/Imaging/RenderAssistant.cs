@@ -7,7 +7,7 @@ using DICOMSharp.Data.Elements;
 using DICOMSharp.Util;
 using System.Drawing.Imaging;
 
-namespace DICOMSharp.Imaging
+namespace DICOMSharpControls.Imaging
 {
     /// <summary>
     /// This class does simple rendering of a DICOM image.  This can be used for one-time rendering (i.e. preview

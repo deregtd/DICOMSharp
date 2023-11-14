@@ -175,7 +175,7 @@ namespace DICOMSharp.Data.Elements
         /// </summary>
         public List<SQItem> Items { get; private set; }
 
-        internal static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("SQ"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public static readonly ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("SQ"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }

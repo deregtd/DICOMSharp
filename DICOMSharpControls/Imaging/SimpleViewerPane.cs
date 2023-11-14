@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using DICOMSharp.Data;
 using System.Diagnostics;
-using DICOMSharp.Imaging;
 
 namespace DICOMSharpControls.Imaging
 {

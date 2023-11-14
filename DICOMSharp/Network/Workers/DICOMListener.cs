@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using DICOMSharp.Util;
 using DICOMSharp.Data.Tags;
+using System;
 
 namespace DICOMSharp.Network.Workers
 {
@@ -46,8 +47,9 @@ namespace DICOMSharp.Network.Workers
             listenSocket.Bind(new IPEndPoint(IPAddress.Any, port));
             listenSocket.Listen(16);    //16? why not!
 
-            listenThread = new Thread(new ThreadStart(ListenThread));
-            listenThread.Start();
+            listenThreadCanceller = new CancellationTokenSource();
+            listenThread = new Thread(new ParameterizedThreadStart(ListenThread));
+            listenThread.Start(listenThreadCanceller.Token);
         }
 
         /// <summary>
@@ -61,16 +63,19 @@ namespace DICOMSharp.Network.Workers
 
             if (listenThread != null)
             {
-                listenThread.Abort();
+                listenThreadCanceller.Cancel();
                 listenThread.Join();
                 listenThread = null;
             }
         }
 
-        private void ListenThread()
+        private void ListenThread(object ctsRaw)
         {
             try
             {
+                CancellationToken cancellationToken = (CancellationToken)ctsRaw;
+                cancellationToken.ThrowIfCancellationRequested();
+
                 logger.Log(LogLevel.Info, "Listen Thread Started");
                 while (true)
                 {
@@ -96,13 +101,13 @@ namespace DICOMSharp.Network.Workers
                     }
                 }
             }
-            catch (ThreadAbortException)
+            catch (OperationCanceledException)
             {
-                logger.Log(LogLevel.Info, "Listen Thread Stopped");
+                logger.Log(LogLevel.Info, "Listen Thread Cleanly Stopped");
             }
             catch (SocketException)
             {
-                logger.Log(LogLevel.Info, "Listen Thread Stopped");
+                logger.Log(LogLevel.Info, "Listen Thread Stopped due to Socket Error");
             }
         }
 
@@ -289,6 +294,7 @@ namespace DICOMSharp.Network.Workers
         public bool IsListening { get { return listenThread != null && listenThread.IsAlive; } }
 
         private Thread listenThread;
+        private CancellationTokenSource listenThreadCanceller;
         private List<DICOMConnection> _connections;
         private int _connectionCounter;
 

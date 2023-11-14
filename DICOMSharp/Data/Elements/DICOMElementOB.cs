@@ -51,7 +51,7 @@ namespace DICOMSharp.Data.Elements
                 }
                 else if (value is sbyte || value is byte)
                 {
-                    data = BitConverter.GetBytes((byte)value);
+                    data = new[]{(byte)value};
                     length = 1;
                 }
                 else if (value is short || value is ushort)
@@ -104,7 +104,7 @@ namespace DICOMSharp.Data.Elements
         private uint length;
         private byte[] data;
 
-        public static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("OB"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public readonly static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("OB"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }

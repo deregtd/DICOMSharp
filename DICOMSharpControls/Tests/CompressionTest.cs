@@ -6,10 +6,10 @@ using DICOMSharp.Data.Transfers;
 using DICOMSharp.Data.Compression;
 using NUnit.Framework;
 using System.Drawing;
-using DICOMSharp.Imaging;
+using DICOMSharpControls.Imaging;
 using DICOMSharp.Logging;
 
-namespace DICOMSharp.Tests
+namespace DICOMSharpControls.Tests
 {
     [TestFixture]
     internal class CompressionTest

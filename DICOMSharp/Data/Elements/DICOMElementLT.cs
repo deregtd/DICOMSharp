@@ -15,7 +15,7 @@ namespace DICOMSharp.Data.Elements
             get { return "LT"; }
         }
 
-        public static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("LT"), 0);
-        internal override ushort VRShort { get { return vrshort; } }
+        public readonly static ushort vrshort = BitConverter.ToUInt16(Encoding.ASCII.GetBytes("LT"), 0);
+        public override ushort VRShort { get { return vrshort; } }
     }
 }
