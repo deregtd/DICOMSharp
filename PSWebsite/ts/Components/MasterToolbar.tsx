@@ -1,18 +1,17 @@
-﻿import _ = require('lodash');
-import React = require('react');
+﻿import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import DicomSeriesStore = require('../Stores/DicomSeriesStore');
-import DisplaySettingsStore = require('../Stores/DisplaySettingsStore');
-import LayoutPicker = require('./LayoutPicker');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PatientContextStore = require('../Stores/PatientContextStore');
+import DisplaySettingsStore from '../Stores/DisplaySettingsStore';
+import LayoutPicker from './LayoutPicker';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PatientContextStore from '../Stores/PatientContextStore';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from '../Stores/ResponsiveDesignStore';
-import SearchPane = require('./SearchPane');
-import SelectedToolStore = require('../Stores/SelectedToolStore');
-import StringUtils = require('../Utils/StringUtils');
-import ToolbarButton = require('./ToolbarButton');
-import UserSettingsPanel = require('./UserSettingsPanel');
+import SearchPane from './SearchPane';
+import SelectedToolStore from '../Stores/SelectedToolStore';
+import * as StringUtils from '../Utils/StringUtils';
+import ToolbarButton, { ToolbarButtonDivider } from './ToolbarButton';
+import UserSettingsPanel from './UserSettingsPanel';
 
 // Force webpack to build LESS files.
 require('../../less/MasterToolbar.less');
@@ -39,7 +38,7 @@ interface MasterToolbarState {
     maxRowsCols: { rows: number, cols: number };
 }
 
-class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
+export default class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
     protected /* virtual */ _buildState(props: {}, initialBuild: boolean): MasterToolbarState {
         const panel = DisplaySettingsStore.getActivePanel();
         return {
@@ -73,14 +72,14 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
         let changeLayoutSection: JSX.Element[] = null;
         if (this.state.maxRowsCols.rows > 1 || this.state.maxRowsCols.cols > 1) {
             changeLayoutSection = [
-                <ToolbarButton.ToolbarButton
+                <ToolbarButton
                     className="changeLayout"
-                    src={ require<string>('../../images/icons/Grid.svg') }
+                    src={ require('../../images/icons/Grid.svg') }
                     onMouseDown={ this._changeLayout.bind(this) }
                     onTouchStart={ this._changeLayout.bind(this) }
                     key="changeLayoutButton"
                 />,
-                <ToolbarButton.ToolbarButtonDivider key="changeLayoutDivider" className= "master" />
+                <ToolbarButtonDivider key="changeLayoutDivider" className= "master" />
             ];
         }
 
@@ -89,9 +88,9 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
                     <div className="MasterToolbar-patientInfoInner"
                         onMouseDown={ this._openSearch.bind(this) }
                         onTouchStart={ this._openSearch.bind(this) }>
-                        <ToolbarButton.ToolbarButton
+                        <ToolbarButton
                             className="patientInfo"
-                            src={ require<string>('../../images/icons/SelectPatient.svg') } />
+                            src={ require('../../images/icons/SelectPatient.svg') } />
                         <div className="MasterToolbar-patientInfoText">
                             { patientInfo }
                         </div>
@@ -103,20 +102,20 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
 
                     { this._getToolsSectionContents() }
 
-                    <ToolbarButton.ToolbarButtonDivider className="master" />,
+                    <ToolbarButtonDivider className="master" />,
 
-                    <ToolbarButton.ToolbarButton
+                    <ToolbarButton
                         className="lines"
                         selected={ this.state.showLines }
-                        src={ require<string>('../../images/icons/Lines.svg') }
+                        src={ require('../../images/icons/Lines.svg') }
                         onMouseDown={ this._toggleShowLines.bind(this) }
                         onTouchStart={ this._toggleShowLines.bind(this) } />
                 </div>
 
                 <div className="MasterToolbar-settings">
-                    <ToolbarButton.ToolbarButton
+                    <ToolbarButton
                         className="settings"
-                        src={ require<string>('../../images/icons/Settings.svg') }
+                        src={ require('../../images/icons/Settings.svg') }
                         onMouseDown={ this._openSettings.bind(this) }
                         onTouchStart={ this._openSettings.bind(this) } />
                 </div>
@@ -144,7 +143,7 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
             }
 
             tools.push(
-                <ToolbarButton.ToolbarButton
+                <ToolbarButton
                     key={ 'ToolbarButton--' + tool }
                     className={ this._getToolClassNameSuffix(tool) }
                     src={ this._getSrcForTool(tool) }
@@ -248,17 +247,17 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
 
     private _getSrcForTool(tool: Tool) {
         if (tool === Tool.Scroll) {
-            return require<string>('../../images/icons/Series.svg');
+            return require('../../images/icons/Series.svg');
         } else if (tool === Tool.WindowLevel) {
-            return require<string>('../../images/icons/Contrast.svg');
+            return require('../../images/icons/Contrast.svg');
         } else if (tool === Tool.Pan) {
-            return require<string>('../../images/icons/Move.svg');
+            return require('../../images/icons/Move.svg');
         } else if (tool === Tool.Zoom) {
-            return require<string>('../../images/icons/Zoom.svg');
+            return require('../../images/icons/Zoom.svg');
         } else if (tool === Tool.Localizer) {
-            return require<string>('../../images/icons/3DLoc.svg');
+            return require('../../images/icons/3DLoc.svg');
         } else if (tool === Tool.MPR) {
-            return require<string>('../../images/icons/MPR.svg');
+            return require('../../images/icons/MPR.svg');
         } else {
             return null;
         }
@@ -282,5 +281,3 @@ class MasterToolbar extends ComponentBase<{}, MasterToolbarState> {
         }
     }
 }
-
-export = MasterToolbar;

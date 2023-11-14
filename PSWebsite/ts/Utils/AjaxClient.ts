@@ -1,13 +1,13 @@
-﻿import SyncTasks = require('synctasks');
+﻿import * as SyncTasks from 'synctasks';
 
 interface AjaxClientOptions {
-    responseType?: string;
+    responseType?: XMLHttpRequestResponseType;
     streamCallback?: (chunk: Uint8Array) => void;
     bytesDownloadedCallback?: (bytesDownloaded: number) => void;
     overrideMimeType?: string;
 }
 
-class AjaxClient {
+export default class AjaxClient {
     constructor(private _baseUrl = '') {
     }
 
@@ -115,5 +115,3 @@ class AjaxClient {
         return deferred.promise();
     }
 }
-
-export = AjaxClient;

@@ -1,15 +1,15 @@
-﻿import _ = require('lodash');
-import React = require('react');
+﻿import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
-import SyncTasks = require('synctasks');
+import * as SyncTasks from 'synctasks';
 
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PSApiClient = require('../Utils/PSApiClient');
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PSApiClient from '../Utils/PSApiClient';
 
 // Force webpack to build LESS files.
 require('../../less/SelectEntityPanel.less');
 
-interface SelectEntityPanelProps extends React.Props<any> {
+interface SelectEntityPanelProps extends React.PropsWithChildren {
     onSelect: (entity: PSEntity) => void;
     requiredFlags: PSEntityFlagsMask;
 }
@@ -19,7 +19,7 @@ interface SelectEntityPanelState {
     entities?: PSEntity[];
 }
 
-class SelectEntityPanel extends ComponentBase<SelectEntityPanelProps, SelectEntityPanelState> {
+export default class SelectEntityPanel extends ComponentBase<SelectEntityPanelProps, SelectEntityPanelState> {
     static selectEntity(requiredFlags = PSEntityFlagsMask.None): SyncTasks.Promise<PSEntity> {
         const deferred = SyncTasks.Defer<PSEntity>();
         ModalPopupStore.pushModal(<SelectEntityPanel requiredFlags={ requiredFlags } onSelect={ (entity) => deferred.resolve(entity) } />, false, false);
@@ -63,5 +63,3 @@ class SelectEntityPanel extends ComponentBase<SelectEntityPanelProps, SelectEnti
         this.props.onSelect(entity);
     };
 }
-
-export = SelectEntityPanel;

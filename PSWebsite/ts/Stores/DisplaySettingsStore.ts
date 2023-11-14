@@ -1,13 +1,11 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe, key, disableWarnings } from 'resub';
 
-import DicomImage = require('../Dicom/DicomImage');
-import DicomSeriesStore = require('./DicomSeriesStore');
-import ImageDownloadStore = require('./ImageDownloadStore');
-import LayoutStore = require('./LayoutStore');
-import PatientContextStore = require('./PatientContextStore');
-import Point2D = require('../Utils/Point2D');
-import Point3D = require('../Utils/Point3D');
+import DicomSeriesStore from './DicomSeriesStore';
+import ImageDownloadStore from './ImageDownloadStore';
+import LayoutStore from './LayoutStore';
+import PatientContextStore from './PatientContextStore';
+import Point3D from '../Utils/Point3D';
 
 @AutoSubscribeStore
 class DisplaySettingsStoreImpl extends StoreBase {
@@ -600,4 +598,4 @@ class DisplaySettingsStoreImpl extends StoreBase {
     }
 }
 
-export = new DisplaySettingsStoreImpl();
+export default new DisplaySettingsStoreImpl();

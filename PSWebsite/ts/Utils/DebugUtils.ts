@@ -2,4 +2,4 @@
     static DebugModeEnabled = false;
 }
 
-export = DebugUtils;
+export default DebugUtils;

@@ -1,26 +1,26 @@
-﻿import _ = require('lodash');
-import React = require('react');
+﻿import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase, Types as ReSubTypes } from 'resub';
 
-import AuthStore = require('../Stores/AuthStore');
-import DebugUtils = require('../Utils/DebugUtils');
-import DicomImage = require('../Dicom/DicomImage');
-import DicomSeries = require('../Dicom/DicomSeries');
-import DicomSeriesStore = require('../Stores/DicomSeriesStore');
-import DicomTags = require('../Utils/DicomTags');
-import DicomUtils = require('../Utils/DicomUtils');
-import DisplaySettingsStore = require('../Stores/DisplaySettingsStore');
-import MathUtils = require('../Utils/MathUtils');
-import Point2D = require('../Utils/Point2D');
-import Point3D = require('../Utils/Point3D');
+import AuthStore from '../Stores/AuthStore';
+import DebugUtils from '../Utils/DebugUtils';
+import DicomImage from '../Dicom/DicomImage';
+import DicomSeries from '../Dicom/DicomSeries';
+import DicomSeriesStore from '../Stores/DicomSeriesStore';
+import * as DicomTags from '../Utils/DicomTags';
+import * as DicomUtils from '../Utils/DicomUtils';
+import DisplaySettingsStore from '../Stores/DisplaySettingsStore';
+import * as MathUtils from '../Utils/MathUtils';
+import Point2D from '../Utils/Point2D';
+import Point3D from '../Utils/Point3D';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from '../Stores/ResponsiveDesignStore';
-import SelectedToolStore = require('../Stores/SelectedToolStore');
-import StringUtils = require('../Utils/StringUtils');
+import SelectedToolStore from '../Stores/SelectedToolStore';
+import * as StringUtils from '../Utils/StringUtils';
 
 // Force webpack to build LESS files.
 require('../../less/LightBox.less');
 
-interface LightBoxProps extends React.Props<LightBox> {
+interface LightBoxProps extends React.PropsWithChildren {
     panelIndex: number;
 
     // Window positioning
@@ -39,7 +39,12 @@ interface LightBoxState extends DisplaySettings {
     cursorStyle?: string;
 }
 
-class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
+export default class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
+    // Store sub Tracking
+    private _dispSetStoSub: number;
+    private _dicomSerStoSub: number;
+    private _selToolStoSub: number;
+
     // Dirty bits
     private _needReZero = false;
     private _needRecalcRenderParameters = false;
@@ -101,22 +106,20 @@ class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
     constructor(props: LightBoxProps) {
         super(props);
 
+        // TODO: Fix this at some point, it doesn't work with prop updates for displaysettingsstore
+        this._dispSetStoSub = DisplaySettingsStore.subscribe(this._displaySettingsUpdated.bind(this), props.panelIndex);
+        this._dicomSerStoSub = DicomSeriesStore.subscribe(this._dicomSeriesUpdated.bind(this));
+        this._selToolStoSub = SelectedToolStore.subscribe(this._recalcCursor.bind(this));
+
         // Do it here after state and the initial variable values are initted
         this._rebuildOffscreenSurface(this.props.panelWidth, this.props.panelHeight);
     }
 
-    protected /* virtual */ _initStoreSubscriptions(): ReSubTypes.StoreSubscription<LightBoxState>[] {
-        return [{
-            store: DisplaySettingsStore,
-            specificKeyValue: this.props.panelIndex,
-            callback: this._displaySettingsUpdated.bind(this)
-        }, {
-            store: DicomSeriesStore,
-            callback: this._dicomSeriesUpdated.bind(this)
-        }, {
-            store: SelectedToolStore,
-            callback: this._recalcCursor.bind(this)
-        }];
+    componentWillUnmount() {
+        // TODO: Fix this at some point, it doesn't work with prop updates for displaysettingsstore
+        DisplaySettingsStore.unsubscribe(this._dispSetStoSub);
+        DicomSeriesStore.unsubscribe(this._dicomSerStoSub);
+        SelectedToolStore.unsubscribe(this._selToolStoSub);
     }
 
     componentWillReceiveProps(newProps: LightBoxProps): void {
@@ -212,7 +215,7 @@ class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
                         this._forceUpdateTimer = null;
 
                         this.forceUpdate();
-                    }, 500);
+                    }, 500) as unknown as number;
                 }
             }
         }
@@ -332,7 +335,7 @@ class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
             return true;
         }
 
-        return super.shouldComponentUpdate(nextProps, nextState);
+        return super.shouldComponentUpdate(nextProps, nextState, undefined);
     }
 
     private _onContextMenuBind = this._onContextMenu.bind(this);
@@ -1688,5 +1691,3 @@ class LightBox extends ComponentBase<LightBoxProps, LightBoxState> {
         }
     }
 }
-
-export = LightBox;

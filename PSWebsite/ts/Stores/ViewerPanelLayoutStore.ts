@@ -1,7 +1,7 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe, key } from 'resub';
 
-import LayoutStore = require('./LayoutStore');
+import LayoutStore from './LayoutStore';
 import ResponsiveDesignStore, { TriggerKeys as ResponsiveDesignStoreTriggerKeys } from './ResponsiveDesignStore';
 
 interface PanelLayout {
@@ -62,4 +62,4 @@ class ViewerPanelLayoutStore extends StoreBase {
     };
 }
 
-export = new ViewerPanelLayoutStore();
+export default new ViewerPanelLayoutStore();

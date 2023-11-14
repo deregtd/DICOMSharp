@@ -1,4 +1,4 @@
-﻿import DicomTags = require('./DicomTags');
+﻿import * as DicomTags from './DicomTags';
 
 let vrLookup: _.Dictionary<string> = {};
 vrLookup[DicomTags.SOPInstanceUID] = 'UI';

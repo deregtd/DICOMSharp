@@ -1,17 +1,17 @@
-﻿import md5 = require('blueimp-md5');
-import _ = require('lodash');
-import React = require('react');
+﻿import md5 from 'blueimp-md5';
+import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
-import SyncTasks = require('synctasks');
+import * as SyncTasks from 'synctasks';
 
-import AuthStore = require('../Stores/AuthStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PSApiClient = require('../Utils/PSApiClient');
+import AuthStore from '../Stores/AuthStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PSApiClient from '../Utils/PSApiClient';
 
 // Force webpack to build LESS files.
 require('../../less/ServerSettingsPanel.less');
 
-interface ServerSettingsPanelProps extends React.Props<any> {
+interface ServerSettingsPanelProps {
 }
 
 interface ServerSettingsPanelState {
@@ -33,7 +33,7 @@ interface ServerSettingsPanelState {
     localUserList?: PSUserExtended[];
 }
 
-class ServerSettingsPanel extends ComponentBase<ServerSettingsPanelProps, ServerSettingsPanelState> {
+export default class ServerSettingsPanel extends ComponentBase<ServerSettingsPanelProps, ServerSettingsPanelState> {
     static showPopup() {
         ModalPopupStore.pushModal(<ServerSettingsPanel />, true, true);
     }
@@ -421,7 +421,7 @@ class ServerSettingsPanel extends ComponentBase<ServerSettingsPanelProps, Server
 
         // Quick validation checks...
 
-        let usernameCheck = {};
+        let usernameCheck: {[key:string]:boolean} = {};
         for (let i = 0; i < this.state.localUserList.length; i++) {
             if (!this.state.localUserList[i]) {
                 continue;
@@ -520,5 +520,3 @@ class ServerSettingsPanel extends ComponentBase<ServerSettingsPanelProps, Server
         return newButtonState;
     }
 }
-
-export = ServerSettingsPanel;

@@ -1,7 +1,7 @@
-﻿import React = require('react');
+﻿import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import ImageDownloadStore = require('../Stores/ImageDownloadStore');
+import ImageDownloadStore from '../Stores/ImageDownloadStore';
 
 // Force webpack to build LESS files.
 require('../../less/DownloadProgress.less');
@@ -10,7 +10,7 @@ interface DownloadProgressState {
     downloads?: StudyDownloadInfo[];
 }
 
-class DownloadProgress extends ComponentBase<{}, DownloadProgressState> {
+export default class DownloadProgress extends ComponentBase<{}, DownloadProgressState> {
     protected /* virtual */ _buildState(props: {}, initialBuild: boolean): DownloadProgressState {
         return {
             downloads: ImageDownloadStore.getDownloads()
@@ -30,5 +30,3 @@ class DownloadProgress extends ComponentBase<{}, DownloadProgressState> {
             </div>;
     }
 }
-
-export = DownloadProgress;

@@ -1,25 +1,25 @@
-﻿import md5 = require('blueimp-md5');
-import _ = require('lodash');
-import React = require('react');
+﻿import md5 from 'blueimp-md5';
+import * as _ from 'lodash';
+import * as React from 'react';
 import { ComponentBase } from 'resub';
 
-import AuthStore = require('../Stores/AuthStore');
-import ModalPopupStore = require('../Stores/ModalPopupStore');
-import PSApiClient = require('../Utils/PSApiClient');
-import SearchPane = require('../Components/SearchPane');
-import ServerSettingsPanel = require('./ServerSettingsPanel');
+import AuthStore from '../Stores/AuthStore';
+import ModalPopupStore from '../Stores/ModalPopupStore';
+import PSApiClient from '../Utils/PSApiClient';
+import SearchPane from '../Components/SearchPane';
+import ServerSettingsPanel from './ServerSettingsPanel';
 
 // Force webpack to build LESS files.
 require('../../less/UserSettingsPanel.less');
 
-interface UserSettingsPanelProps extends React.Props<any> {
+interface UserSettingsPanelProps extends React.PropsWithChildren {
 }
 
 interface UserSettingsPanelState {
     userInfo?: UserInfo;
 }
 
-class UserSettingsPanel extends ComponentBase<UserSettingsPanelProps, UserSettingsPanelState> {
+export default class UserSettingsPanel extends ComponentBase<UserSettingsPanelProps, UserSettingsPanelState> {
     static showPopup() {
         ModalPopupStore.pushModal(<UserSettingsPanel />, true, true);
     }
@@ -107,5 +107,3 @@ class UserSettingsPanel extends ComponentBase<UserSettingsPanelProps, UserSettin
         AuthStore.logoff();
     }
 }
-
-export = UserSettingsPanel;

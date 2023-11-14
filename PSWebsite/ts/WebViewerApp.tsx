@@ -1,19 +1,19 @@
-﻿import React = require('react');
-import ReactDOM = require('react-dom');
+﻿import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Options } from 'resub';
+import * as SyncTasks from 'synctasks';
 
-import AuthStore = require('./Stores/AuthStore');
-import DebugUtils = require('./Utils/DebugUtils');
-import LoginBox = require('./Components/LoginBox');
-import ModalPopupStore = require('./Stores/ModalPopupStore');
-import SearchPane = require('./Components/SearchPane');
-import SyncTasks = require('synctasks');
-import ViewerInterface = require('./Components/ViewerInterface');
+import AuthStore from './Stores/AuthStore';
+import DebugUtils from './Utils/DebugUtils';
+import LoginBox from './Components/LoginBox';
+import ModalPopupStore from './Stores/ModalPopupStore';
+import SearchPane from './Components/SearchPane';
+import ViewerInterface from './Components/ViewerInterface';
 
 // Force webpack to build LESS files.
-require('../less/Global.less');
+// require('../less/Global.less');
 
-declare var releaseBuild: boolean;
+declare const releaseBuild: boolean;
 
 class WebViewerApp {
     constructor() {
@@ -28,7 +28,7 @@ class WebViewerApp {
         if (queryString.indexOf('?') === 0) {
             queryString = queryString.substr(1);
         }
-        let urlParams = {};
+        let urlParams: {[key:string]:string } = {};
         queryString.split('&').forEach(item => {
             const spl = item.split('=');
             urlParams[spl[0]] = spl[1];

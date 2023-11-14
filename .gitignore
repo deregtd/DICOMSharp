@@ -20,6 +20,7 @@ node_modules
 /DICOMSharpJPEGCompression/dcmtk-3.6.0
 /DICOMSharpJPEGCompression/charls-2.0.0
 /DICOMSharpJPEGCompression/openjpeg-v2.1.2-windows-x86
+/PSWebsite/dist
 /PSWebsite/css/*.css
 /PSWebsite/js
 /PSWebsite/rawjs

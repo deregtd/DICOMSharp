@@ -3,12 +3,12 @@
  * move out to separate stores at some point.
  */
 
-import _ = require('lodash');
+import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe, key } from 'resub';
 
-import DicomImage = require('../Dicom/DicomImage');
-import DicomSeries = require('../Dicom/DicomSeries');
-import DicomTags = require('../Utils/DicomTags');
+import DicomImage from '../Dicom/DicomImage';
+import DicomSeries from '../Dicom/DicomSeries';
+import * as DicomTags from '../Utils/DicomTags';
 
 @AutoSubscribeStore
 class DicomSeriesStoreImpl extends StoreBase {
@@ -96,4 +96,4 @@ class DicomSeriesStoreImpl extends StoreBase {
     }
 }
 
-export = new DicomSeriesStoreImpl();
+export default new DicomSeriesStoreImpl();

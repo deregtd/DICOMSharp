@@ -1,7 +1,7 @@
-﻿import _ = require('lodash');
-import SyncTasks = require('synctasks');
+﻿import * as _ from 'lodash';
+import * as SyncTasks from 'synctasks';
 
-import AjaxClient = require('./AjaxClient');
+import AjaxClient from './AjaxClient';
 
 function unminifySendStudiesModel(minified: SendStudiesModel): SendStudiesModel {
     return {
@@ -286,4 +286,4 @@ class PSApiClientImpl {
     }
 }
 
-export = new PSApiClientImpl();
+export default new PSApiClientImpl();

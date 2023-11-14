@@ -1,4 +1,4 @@
-﻿import _ = require('lodash');
+﻿import * as _ from 'lodash';
 import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
 
 @AutoSubscribeStore
@@ -21,4 +21,4 @@ class ModalPopupStoreImpl extends StoreBase {
     }
 }
 
-export = new ModalPopupStoreImpl();
+export default new ModalPopupStoreImpl();

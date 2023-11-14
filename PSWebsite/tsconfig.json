@@ -2,13 +2,14 @@
     "compilerOptions": {
         "declaration": false,
         "noResolve": false,
+        "skipLibCheck": true,
         "jsx": "react",
         "module": "commonjs",
         "target": "es5",
         "experimentalDecorators": true,
+        "esModuleInterop": true,
         "sourceMap": true,
         "noImplicitAny": true,
-        "suppressImplicitAnyIndexErrors": true,
         "outDir": "./rawjs"
     },
     "filesGlob": [
