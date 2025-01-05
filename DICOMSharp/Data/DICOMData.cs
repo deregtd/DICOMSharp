@@ -52,7 +52,11 @@ namespace DICOMSharp.Data
             //Test for DICM Header
             stream.Seek(128, SeekOrigin.Begin);
             byte[] DICOMtest = new byte[4];
-            stream.Read(DICOMtest, 0, 4);
+            var read = stream.Read(DICOMtest, 0, 4);
+            if (read != 4)
+            {
+                throw new Exception("Failed to read DICM header");
+            }
             if (Encoding.ASCII.GetString(DICOMtest) == "DICM")
             {
                 //Has it!  Start reading from here (132 bytes in).

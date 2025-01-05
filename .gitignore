@@ -13,7 +13,6 @@ Release
 packages
 *.ipch
 .vs
-.vscode
 node_modules
 /PSWebsite/logs
 /Build

@@ -1,0 +1,6 @@
+[tools]
+dotnet = "latest"
+nodejs = "lts"
+
+[tasks.build]
+run = "dotnet build"

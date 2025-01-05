@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools",
+        "jmrog.vscode-nuget-package-manager",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "Orta.vscode-jest",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "foxundermoon.shell-format"
+    ]
+}

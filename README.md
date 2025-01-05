@@ -1,3 +1,23 @@
+# Prereqs
+
+* [mise](https://github.com/jdx/mise) - Install with `brew` on macOS
+* Visual Studio Code/Cursor - Install suggested extensions
+
+# Status
+
+* DICOMSharp - Completely converted over to .NET 9.0, compiles for windows on windows/macos
+* DICOMSharpTests - Converted to .NET 7-windows, only builds on/for windows
+
+* DICOMSharpControls - Converted to .NET 7-windows, only builds on/for windows
+* DICOMSharpJPEGCompression - C++ project, no worky, compression disabled for now?
+* Samples
+  * DICOMDump - Converted to .NET 7-windows, only builds on/for windows
+  * DICOMManager - Converted to .NET 7-windows, only builds on/for windows
+  * PromiscuousArchiver - Converted to .NET 7, CLI-only tool, only builds on/for windows
+  * ReallySimpleViewer - Converted to .NET 7-windows, only builds on/for windows
+
+# OLD
+
 Prerequisites:
 * Visual Studio 2015 & VS Update 1 (with Visual C++)
 * CMake 3.3.0 or higher (http://www.cmake.org/)

@@ -11,7 +11,6 @@ using DICOMSharp.Data.Tags;
 using DICOMSharp.Util;
 using System.Drawing;
 using System.Drawing.Imaging;
-using DICOMSharpControls.Imaging;
 
 namespace DICOMSharpTests
 {
@@ -23,30 +22,11 @@ namespace DICOMSharpTests
         {
             logger.MessageLogged += new SubscribableListener.LoggedMessageHandler(logger_MessageLogged);
 
-            //EchoTest.Test(logger, false);
+            EchoTest.Test(logger, false);
             //ListenerTest.Test(logger);
             
             //DICOMSharp.Tests.CompressionTest.RoundTripAndRender();
             //TestThumbnails();
-        }
-
-        static void TestThumbnails()
-        {
-            foreach (FileInfo fi in new DirectoryInfo("..\\CompressionSamples").GetFiles("*.dcm"))
-            //foreach (FileInfo fi in new DirectoryInfo("..\\CompressionSamples").GetFiles("JPEG-LS Lossless.dcm"))
-            {
-                Console.WriteLine("Compression Test -- Filename: " + fi.Name);
-
-                DICOMData data = new DICOMData();
-                data.ParseFile(fi.FullName, true, new NullLogger());
-                //data.Uncompress();
-                //data.WriteFile(fi.FullName.Replace(".dcm", "_un.dcm"));
-
-                Image testImage = DICOMQuickRenderer.QuickRender(data, 0);
-
-                testImage.Save(fi.FullName.Replace(".dcm", ".png"), ImageFormat.Png);
-            }
-
         }
 
         static void logger_MessageLogged(LogLevel level, string message)
